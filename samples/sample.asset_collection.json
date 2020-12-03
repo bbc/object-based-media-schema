@@ -1,0 +1,15 @@
+{
+    "id": "ce61dd92-b9d2-4d86-9e60-a8d4d25e69ae",
+    "object_class": "ASSET_COLLECTION",
+    "name": "All Videos Pertaining To Making Toast",
+    "description": "",
+    "version": "0:0",
+    "tags": {},
+    "meta": {},
+    "asset_collection_type": "urn:x-object-based-media:asset-collection-types:simple-av/v1.0",
+    "assets": {
+        "av_src": "urn:x-ipstudio:entity:package:2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c"
+    },
+    "loop": true,
+    "schema_version": "0.2.0"
+}

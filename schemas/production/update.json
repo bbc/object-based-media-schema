@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Production in update",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "story_id": {"$ref": "/uuids.json#/definitions/story_uuid"},
+                "production_package_bin": { "$ref": "/production/types.json#/definitions/production_package_bin" },
+                "sources_group": { "$ref": "/production/types.json#/definitions/sources_group" },
+                "previous_shot": { "$ref": "/production/types.json#/definitions/shot_link" },
+                "next_shot": { "$ref": "/production/types.json#/definitions/shot_link" }
+            },
+            "required": ["production_package_bin"],
+            "additionalProperties": false
+        }
+    ]
+}

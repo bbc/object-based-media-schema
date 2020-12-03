@@ -1,0 +1,143 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "body": {
+            "description": "Does this narrative element contain assets in a (REPRESENTATION_COLLECTION_ELEMENT) or does it contain a nested sub-story in a (STORY_ELEMENT)?",
+            "oneOf": [{
+                    "title": "Representation Collection Type",
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "REPRESENTATION_COLLECTION_ELEMENT"
+                            ]
+                        },
+                        "representation_collection_target_id": {
+                            "$ref": "/uuids.json#/definitions/representation_collection_uuid",
+                            "description": "UUID of Representation Collection"
+                        }
+                    },
+                    "required": ["type","representation_collection_target_id"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Story Element Type",
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "STORY_ELEMENT"
+                            ]
+                        },
+                        "story_target_id": {
+                            "$ref": "/uuids.json#/definitions/story_uuid",
+                            "description": "UUID of Story to move in to"
+                        }
+                    },
+                    "required": ["type", "story_target_id"],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "links": {
+            "type": "array",
+            "description": "An ordered array of links in which the first link to satisfy conditions is the one that is followed. If no links are suitable, then this story ends",
+            "items": {
+                "title": "link",
+                "allOf": [{
+                    "properties": {
+                        "id": {
+                            "$ref": "/uuids.json#/definitions/narrative_element_link_uuid",
+                            "description": "UUID of this Narrative Element Link"
+                        },
+                        "condition": {
+                            "$ref": "/expression.json#",
+                            "description": "Condition that determines whether this link is taken"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Free-text description of this link"
+                        }
+                    }
+                },
+                {
+                    "oneOf": [{
+                        "title": "Narrative Element Link",
+                        "type": "object",
+                        "description": "Describes the next narrative element to play assuming the condition evaluates to true",
+                        "properties": {
+                            "id": {},
+                            "condition": {},
+                            "description": {},
+                            "target_narrative_element_id": {
+                                "description": "UUID of narrative_element this link points to",
+                                "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+                            },
+                            "link_type": {
+                                "type": "string",
+                                "enum": [
+                                    "NARRATIVE_ELEMENT"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "condition",
+                            "link_type",
+                            "target_narrative_element_id"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "End Story Link",
+                        "type": "object",
+                        "description": "This will either end the experience, or pass control back to the narrative element holding this story",
+                        "properties": {
+                            "id": {},
+                            "condition": {},
+                            "description": {},
+                            "link_type": {
+                                "type": "string",
+                                "enum": [
+                                    "END_STORY"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "condition",
+                            "link_type"
+                        ],
+                        "additionalProperties": false
+                    },
+                    {
+                        "title": "Restart Story Link",
+                        "type": "object",
+                        "description": "Return to start of story and choose a new beginning based on the conditions",
+                        "properties": {
+                            "id": {},
+                            "condition": {},
+                            "description": {},
+                            "link_type": {
+                                "type": "string",
+                                "enum": [
+                                    "CHOOSE_BEGINNING"
+                                ],
+                                "description": "CHOOSE_BEGINNING: "
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "condition",
+                            "link_type"
+                        ],
+                        "additionalProperties": false
+                    }
+                    ]
+                }
+            ]}
+        }
+    }
+}

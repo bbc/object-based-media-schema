@@ -1,0 +1,31 @@
+{
+    "id": "2240f9e5-c2bc-4cae-93ac-ebaef4878ed6",
+    "object_class": "SCENE",
+    "name": "Filleting a Fish",
+    "description": "Start with closeup of fish followed by mid shot of fish being filleted and finish with closeup of filleted fish.",
+    "version": "0:0",
+    "tags": {},
+    "location": "Kitchen",
+    "rushes_complete": true,
+    "quick_tags": [
+        {
+            "id": "b02a5c44-aaa6-402f-a720-6670093ec769",
+            "name": "Knife in shot",
+            "color": "#FFFFFF"
+        }
+    ],
+    "production_package_bin": [
+        "a45c17fb-2d9c-4d5d-9e62-a6285b9da9dc",
+        "16da2df2-192a-45ef-a619-0ac2f2d449a9",
+        "615da23e-45d2-4412-8171-73f702a603d5"
+    ],
+    "representation_id": "82e05489-c2f7-4770-a05c-f2c68b288647",
+    "narrative_element_id": "15516b1c-7ce9-4a61-9270-a90137d742f2",
+    "single_essence_umcp_compositions": [],
+    "shot_ids": [
+        "cd78ca40-df6a-45bf-925a-b4438acdef5f",
+        "d77043e6-579d-4c5f-aeb9-ef62ff464525",
+        "18ee297e-841f-4ef7-a8e4-12e54b5116c9"
+    ],
+    "schema_version":"0.2.0"
+}

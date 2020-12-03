@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Dictionary of extra metadata for the StoryGraph tool",
+    "properties": {
+        "xPos": {
+            "type": "number",
+            "description": "(NE Only) X Position of NE on graph"
+        },
+        "yPos": {
+            "type": "number",
+            "description": "(NE Only) Y Position of NE on graph"
+        },
+        "colour": {
+            "type": "string",
+            "description": "(NE Only) Colour of NE on graph"
+        }
+    },
+    "additionalProperties": true
+}

@@ -1,0 +1,106 @@
+{
+    "id": "23fb988d-510f-48c2-bae5-9b9e7d927bf4",
+    "version": "0:0",
+    "name": "Grizzly Bears",
+    "description": "A story about some bears",
+    "object_class": "STORY",
+    "tags": {
+        "characters": [
+            "Mummy Bear",
+            "Daddy Bear",
+            "Baby Bear",
+            "Goldilocks"
+        ],
+        "recipies": [
+            "eggs",
+            "toast",
+            "egg on toast",
+            "porridge",
+            "porridge on toast",
+            "egg on porridge on toast"
+        ]
+    },
+    "variables": {
+        "likesToast": {
+            "default_value": true,
+            "variable_type": "boolean",
+            "description": "does the user like toast"
+        },
+        "slotsInToaster": {
+            "default_value": 2,
+            "variable_type": "number",
+            "description": "how many toaster slots do we have"
+        },
+        "eggsInFridge": {
+            "default_value": 2,
+            "variable_type": "number",
+            "range": {
+                "min_val": 0,
+                "max_val": 6
+            },
+            "description": "how many eggs do we have"
+        },
+        "recipies": {
+            "default_value": "eggs",
+            "variable_type": "list",
+            "values": [
+                "eggs",
+                "toast",
+                "egg on toast",
+                "porridge",
+                "porridge on toast",
+                "egg on porridge on toast"
+            ],
+            "description": "which recipe"
+        }
+    },
+    "meta": {
+        "storyplayer": {
+            "css": ".romper-player { background: red; }",
+            "taster": {
+                "active": false
+            },
+            "htmlmeta": "<meta property=\"og:title\" content=\"Grizzly Bears Title\">",
+            "htmltitle": "Grizzly Bears Title"
+        },
+        "romper": {
+            "requirements": [
+                {
+                    "logic": {
+                        "or": [
+                            { "==": [{ "var": "supports.hls" }, true] },
+                            { "==": [{ "var": "supports.dash" }, true] }
+                        ]
+                    },
+                    "errorMsg": "Your browser doesn't support this experience. Please try another browser or device"
+                },
+                {
+                    "logic": {
+                        "and": [
+                            {"==": [{ "var": "browser.ie" }, false]},
+                            {"==": [{ "var": "browser.edge" }, false]}
+                        ]
+                    },
+                    "errorMsg": "This experience is not compatible with IE or Edge, please use Chrome or Firefox."
+                }
+            ]
+        }
+    },
+    "beginnings": [
+        {
+            "narrative_element_id": "c46cd043-9edc-4c46-8b7c-f70afc6d6c23",
+            "condition": {"==" : [1, 1]}
+        },
+        {
+            "narrative_element_id": "09fa0260-b431-4b83-9fc0-3aeaa079ba8c",
+            "condition": {"==" : [1, 0]}
+        }
+    ],
+    "narrative_element_ids": [
+        "c46cd043-9edc-4c46-8b7c-f70afc6d6c23",
+        "896ac4b9-92d3-48fd-b737-71e3afbd2689",
+        "09fa0260-b431-4b83-9fc0-3aeaa079ba8c",
+        "e428d51e-8739-4802-997c-fd65b9e232df"
+    ],
+    "schema_version":"0.2.0"
+}

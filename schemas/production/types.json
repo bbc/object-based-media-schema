@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Production Element",
+    "description": "The Production element holds links to all the Production Asset Collections.",
+    "definitions": {
+        "production_package_bin": {
+            "type": "array",
+            "items": {
+                "$ref": "/uuids.json#/definitions/production_package_uuid"
+            },
+            "description": "Link of links to production packages that don't fit into any Scenes",
+            "minItems": 0
+        },
+        "sources_group": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "UUID of IP Studio group. The group holds links to all the live sources (audio/video) that should be captured during a shoot."
+        },
+        "shot_link": {
+            "type": "object",
+            "properties": {
+                "scene_id": {
+                    "$ref": "/uuids.json#/definitions/scene_uuid",
+                    "description": "Link to Scene element that is associated with this element."
+                },
+                "shot_id": {
+                    "$ref": "/uuids.json#/definitions/shot_uuid",
+                    "description": "Link to Narrative element that is associated with this element."
+                }
+            },
+            "required": ["scene_id", "shot_id"]
+        }
+    }
+}

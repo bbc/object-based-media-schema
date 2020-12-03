@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Rush",
+    "description": "Types for Rush.",
+    "definitions": {
+        "take_number": {
+            "type": "number",
+            "description": "Take number"
+        },
+        "production_package_id": {
+            "$ref": "/uuids.json#/definitions/production_package_uuid",
+            "description": "Link to production package containing rush"
+        },
+        "in_progress": {
+            "type": "boolean",
+            "description": "Is the rush currently being shot?"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "id": "82e05489-c2f7-4770-a05c-f2c68b288647",
+    "object_class": "REPRESENTATION",
+    "version": "0:0",
+    "name": "Placeholder representation",
+    "tags": {},
+    "representation_type": "urn:x-object-based-media:representation-types:placeholder/v1.0",
+    "asset_collections": {},
+    "description": "This placeholder will be replaced with some awesome video content",
+    "schema_version":"0.2.17"
+}

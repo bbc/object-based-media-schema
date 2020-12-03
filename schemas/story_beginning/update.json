@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Story beginnings as used for creates and updates with the API",
+    "type": "object",
+    "properties": {
+        "condition": {
+            "$ref": "/expression.json#",
+            "description": "A boolean expression written in JsonLogic, which includes the JSONLogic data components"
+        },
+        "narrative_element_id": {
+            "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+        }
+    },
+    "required": ["condition", "narrative_element_id"],
+    "additionalProperties": false
+}

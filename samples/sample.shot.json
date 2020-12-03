@@ -1,0 +1,17 @@
+{
+    "id": "cd78ca40-df6a-45bf-925a-b4438acdef5f",
+    "object_class": "SHOT",
+    "version": "0:0",
+    "tags": {},
+    "name": "Closeup of Fish",
+    "description": "Shot of Fish on counter",
+    "location": "Toms Kitchen",
+    "shot_number": 1,
+    "complete": true,
+    "rush_ids": [
+        "81f262ac-3533-484e-a037-d416562f48ed",
+        "77a65444-87fd-48f4-bda6-b7e72cbad49a",
+        "730a0fdd-fc7c-49c1-a665-ba94e8024ec0"
+    ],
+    "schema_version":"0.2.0"
+}

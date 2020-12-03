@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shot record in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "enum": [
+                        "SHOT"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "location": {"$ref": "/shot/types.json#/definitions/location" },
+                "shot_number": {"$ref": "/shot/types.json#/definitions/shot_number" },
+                "complete": {"$ref": "/shot/types.json#/definitions/complete" },
+                "rush_ids": {"$ref": "/shot/types.json#/definitions/rush_ids" },
+                "schema_version": {}
+            },
+            "required": ["shot_number", "complete", "rush_ids"],
+            "additionalProperties": false
+        }
+    ]
+}

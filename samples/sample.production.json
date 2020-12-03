@@ -1,0 +1,27 @@
+{
+    "id": "31badbe3-1509-4768-8e8b-8589e98eac53",
+    "object_class": "PRODUCTION",
+    "name": "Grizzly Bears Production",
+    "version": "0:0",
+    "tags": {},
+    "story_id": "c0851ba1-fe27-401f-be40-e9be36bd715a",
+    "production_package_bin": ["513792cc-f0cd-4aa3-987c-d533604f16ff"],
+    "sources_group": "03455ad6-3cf4-41e8-a289-23bec24acfde",
+    "scenes": [
+        "45e1ff19-3326-441b-82fc-ed9f34f84c03",
+        "20e2f5d5-c935-44aa-a4c1-1d83bb210515",
+        "8fd8136a-4fc0-474c-ab75-7aee23595e74"
+    ],
+    "shooting_schedules": [
+      "35d42a1f-1eb1-4bd7-8a62-920c90064dc2"
+    ],
+    "previous_shot": {
+        "scene_id": "20e2f5d5-c935-44aa-a4c1-1d83bb210515",
+        "shot_id": "26df397f-f41c-411c-b57c-290333983be1"
+    },
+    "next_shot": {
+        "scene_id": "8fd8136a-4fc0-474c-ab75-7aee23595e74",
+        "shot_id": "93f4c507-3b41-4848-a809-742c85a41569"
+    },
+    "schema_version":"0.2.0"
+}

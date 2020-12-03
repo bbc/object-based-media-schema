@@ -1,0 +1,24 @@
+{
+    "id": "2397b88a-2315-4fe3-af0d-2b011766dbec",
+    "object_class": "REPRESENTATION_COLLECTION",
+    "version": "0:0",
+    "name": "Put Toast In The Toaster",
+    "tags": {
+        "cantThinkOfAnyrepresentation_collections_elementTagCategories": [
+            "foo",
+            "bar"
+        ]
+    },
+    "meta": {},
+    "representations": [
+        {
+            "representation_id": "8a6663da-d6e0-4e75-a664-dac9e09a7d14",
+            "condition": {"==" : [ { "var" : "userPreferenceFlashcards" }, true ] }
+        },
+        {
+            "representation_id": "974fae33-e688-4c07-a111-2cb0f9e54a9c",
+            "condition": {"==": [false, true]}
+        }
+    ],
+    "schema_version":"0.2.0"
+}

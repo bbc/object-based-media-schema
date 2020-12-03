@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Narrative Element in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "description": "Object Class (Fixed Value)",
+                    "enum": [
+                        "NARRATIVE_ELEMENT"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "body": { "$ref": "/narrative_element/types.json#/definitions/body" },
+                "links": { "$ref": "/narrative_element/types.json#/definitions/links" },
+                "schema_version": {}
+            },
+            "required": ["body", "links"],
+            "additionalProperties": false
+        }
+    ]
+}

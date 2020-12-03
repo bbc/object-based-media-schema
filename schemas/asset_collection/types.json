@@ -1,0 +1,255 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Asset Collection types",
+    "definitions": {
+        "assets": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "title": "SIMPLE_AV",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:simple-av/v1.0"
+                            ]
+                        },
+                        "loop": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Repeat the media indefinitely when true"
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "av_src":{
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI of audio/video."
+                                },
+                                "sub_src": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URI of subtitles for av_src"
+                                }
+                            },
+                            "required": ["av_src"],
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                {
+                    "title": "360_AV",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:immersive/v1.0"
+                            ]
+                        },
+                        "loop": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Repeat the media indefinitely if true"
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "av_src":{
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URI of audio/video."
+                                },
+                                "video_format": {
+                                    "type": "string",
+                                    "enum": [
+                                        "MONO",
+                                        "180",
+                                        "STEREO_HORIZONTAL",
+                                        "STEREO_VERTICAL"
+                                    ],
+                                    "description": "Is the video mono (default), or stereo (vertical split or horizontal)"
+                                },
+                                "audio_format": {
+                                    "type": "string",
+                                    "enum": [
+                                        "MONO",
+                                        "STEREO",
+                                        "2H1V"
+                                    ],
+                                    "description": "Ambisonic format, e.g., 2H1V; if not supplied, assume audio is mono."
+                                },
+                                "sub_src": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URI of subtitles for av_src"
+                                }
+                            },
+                            "required": ["av_src", "video_format", "audio_format"],
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                {
+                    "title": "LOOPING AUDIO",
+                    "description": "(Deprecated) LOOPING AUDIO is deprecated in favour of SIMPLE AUDIO with looping flag",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:looping-audio/v1.0"
+                            ]
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "audio_src": {
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI pointing to audio"
+                                },
+                                "sub_src":{
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI of subtitles."
+                                }
+                            },
+                            "required": ["audio_src"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "not": { "required": [ "loop" ] }
+                },
+                {
+                    "title": "SIMPLE AUDIO",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:simple-audio/v1.0"
+                            ]
+                        },
+                        "loop": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Repeat the media indefinitely if true"
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "audio_src": {
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI pointing to audio"
+                                },
+                                "sub_src":{
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI of subtitles"
+                                }
+                            },
+                            "required": ["audio_src"],
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                {
+                    "title": "SIMPLE TEXT",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:simple-text/v1.0"
+                            ]
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "text_src": {
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI pointing to text file"
+                                }
+                            },
+                            "required": ["text_src"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "not": { "required": [ "loop" ] }
+                },
+                {
+                    "title": "MARKDOWN",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:markdown/v1.0"
+                            ]
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "markdown_src": {
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI pointing to markdown file"
+                                }
+                            },
+                            "required": ["markdown_src"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "not": { "required": [ "loop" ] }
+                },
+                {
+                    "title": "IMAGE",
+                    "properties": {
+                        "asset_collection_type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:asset-collection-types:image/v1.0"
+                            ]
+                        },
+                        "assets": {
+                            "type": "object",
+                            "properties": {
+                                "image_src": {
+                                    "type": "string",
+                                    "format":"uri",
+                                    "description": "URI pointing to image"
+                                }
+                            },
+                            "required": ["image_src"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "not": { "required": [ "loop" ] }
+                },
+                {
+                "title": "IMAGE_360",
+                "properties": {
+                    "asset_collection_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:asset-collection-types:image360/v1.0"
+                        ]
+                    },
+                    "assets": {
+                        "type": "object",
+                        "properties": {
+                            "image_src": {
+                                "type": "string",
+                                "format":"uri",
+                                "description": "URI pointing to image"
+                            }
+                        },
+                        "required": ["image_src"],
+                        "additionalProperties": false
+                    }
+                },
+                "not": { "required": [ "loop" ] }
+            }
+            ]
+        }
+    }
+}

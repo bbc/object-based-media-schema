@@ -1,0 +1,14 @@
+bin/validate experience/without_production samples/sample.experience_without_production.json
+bin/validate experience/with_production samples/sample.experience_with_production.json
+bin/validate story/full samples/sample.story.json;
+bin/validate narrative_element/full samples/sample.narrative_element.json;
+bin/validate representation_collection/full samples/sample.representation_collection.json;
+bin/validate representation/full samples/sample.representation.json;
+bin/validate representation/full samples/sample.placeholder_representation.json;
+bin/validate asset_collection/full samples/sample.asset_collection.json;
+bin/validate production/full samples/sample.production.json;
+bin/validate scene/full samples/sample.scene.json;
+bin/validate shot/full samples/sample.shot.json;
+bin/validate rush/full samples/sample.rush.json;
+bin/validate production_package/full samples/sample.production_package.json;
+bin/validate shooting_schedule/full samples/sample.shooting_schedule.json;

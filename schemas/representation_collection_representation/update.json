@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation collection  as used for creates and updates with the API",
+    "type": "object",
+    "properties": {
+        "condition": {
+            "$ref": "/expression.json#",
+            "description": "Condition that determines whether this representation is played"
+        },
+        "position": {
+            "type": "number",
+            "description": "Position to insert representation_collection_representation into array of representation_collection_representations. If property not provided then representation_collection_representation is inserted at the end of the array"
+        },
+        "representation_id": {
+            "$ref": "/uuids.json#/definitions/representation_uuid"
+        }
+    },
+    "required": ["condition", "representation_id"],
+    "additionalProperties": false
+}

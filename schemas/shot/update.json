@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shots as used for creates and updates with the API",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "location": {"$ref": "/shot/types.json#/definitions/location" },
+                "shot_number": {"$ref": "/shot/types.json#/definitions/shot_number" },
+                "complete": {"$ref": "/shot/types.json#/definitions/complete" },
+                "scene_id": {"$ref": "/uuids.json#/definitions/scene_uuid"}
+            },
+            "required": ["shot_number", "complete", "scene_id"],
+            "additionalProperties": false
+        }
+    ]
+}

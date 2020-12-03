@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation schema used for updating through API",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        { "$ref": "/representation/types.json#/definitions/representation"},
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "representation_type": {},
+                "asset_collections": {},
+                "duration": {
+                    "type": ["number", "null"]
+                },
+                "behaviours":{ "$ref": "/representation/types.json#/definitions/behaviours" }
+            },
+            "required": ["representation_type"],
+            "additionalProperties": false
+        }
+    ]
+}

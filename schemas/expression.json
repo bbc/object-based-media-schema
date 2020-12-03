@@ -1,0 +1,598 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "any": {
+            "oneOf": [
+                { "$ref": "/expression.json#" },
+                { "type": "array", "items": { "$ref": "#/definitions/any" } }
+            ]
+        }
+    },
+
+    "oneOf": [
+        {
+            "type": "boolean"
+        },
+        {
+            "type": "string"
+        },
+        {
+            "type": "number"
+        },
+        {
+            "title": "var",
+            "type": "object",
+            "description": "Retrieve data from the provided data object.",
+            "properties": {
+                "var": {
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "description": "Variable to be referenced",
+                                    "$ref": "/expression.json#"
+                                },
+                                {
+                                    "description": "Default value",
+                                    "$ref": "#/definitions/any"
+                                }
+                            ],
+                            "minItems": 1,
+                            "additionalItems": false
+                        },
+                        {
+                            "description": "Variable to be referenced",
+                            "$ref": "/expression.json#"
+                        }
+                    ]
+                }
+            },
+            "required": ["var"],
+            "additionalProperties": false
+        },
+        {
+            "title": "missing",
+            "type": "object",
+            "description": "Takes an array of data keys to search for (same format as var). Returns an array of any keys that are missing from the data object, or an empty array.",
+            "properties": {
+                "missing": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["missing"],
+            "additionalProperties": false
+        },
+        {
+            "title": "missing_some",
+            "type": "object",
+            "description": "Takes a minimum number of data keys that are required, and an array of keys to search for (same format as var or missing). Returns an empty array if the minimum is met, or an array of the missing keys otherwise.",
+            "properties": {
+                "missing_some": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "description": "Minimum number of data keys that are required",
+                            "type": "number"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ]
+                }
+            },
+            "required": ["missing_some"],
+            "additionalProperties": false
+        },
+        {
+            "title": "if",
+            "type": "object",
+            "description": "The if statement typically takes 3 arguments: a condition (if), what to do if it’s true (then), and what to do if it’s false (else). If can also take more than 3 arguments, and will pair up arguments like if/then elseif/then elseif/then else.",
+            "properties": {
+                "if": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/any" },
+                    "minItems": 3
+                }
+            },
+            "required": ["if"],
+            "additionalProperties": false
+        },
+        {
+            "title": "==",
+            "description": "Tests equality, with type coercion.",
+            "type": "object",
+            "properties": {
+                "==": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/any"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["=="],
+            "additionalProperties": false
+        },
+        {
+            "title": "===",
+            "description": "Tests strict equality.",
+            "type": "object",
+            "properties": {
+                "===": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/any"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["==="],
+            "additionalProperties": false
+        },
+        {
+            "title": "!=",
+            "description": "Tests not-equal, with type coercion.",
+            "type": "object",
+            "properties": {
+                "!=": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/any"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["!="],
+            "additionalProperties": false
+        },
+        {
+            "title": "!==",
+            "description": "Tests strict not-equal.",
+            "type": "object",
+            "properties": {
+                "!==": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "#/definitions/any"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["!=="],
+            "additionalProperties": false
+        },
+        {
+            "title": "!",
+            "description": "Logical negation",
+            "type": "object",
+            "properties": {
+                "!": {
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": [
+                                {
+                                    "$ref": "/expression.json#"
+                                }
+                            ],
+                            "additionalItems": false
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ]
+                }
+            },
+            "required": ["!"],
+            "additionalProperties": false
+        },
+        {
+            "title": "or",
+            "description": "Simple Boolean tests (At a more sophisticated level, or returns the first truthy argument)",
+            "type": "object",
+            "properties": {
+                "or": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/any"
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": ["or"],
+            "additionalProperties": false
+        },
+        {
+            "title": "and",
+            "description": "Simple Boolean tests (At a more sophisticated level, and returns the first falsey argument)",
+            "type": "object",
+            "properties": {
+                "and": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/any"
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": ["and"],
+            "additionalProperties": false
+        },
+        {
+            "title": ">",
+            "description": "Greater than",
+            "type": "object",
+            "properties": {
+                ">": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "minItems": 2,
+                    "maxItems" : 2,
+                    "additionalItems": false
+                }
+            },
+            "required": [">"],
+            "additionalProperties": false
+        },
+        {
+            "title": ">=",
+            "description": "Greater than or equal to",
+            "type": "object",
+            "properties": {
+                ">=": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "minItems": 2,
+                    "maxItems" : 2,
+                    "additionalItems": false
+                }
+            },
+            "required": [">="],
+            "additionalProperties": false
+        },
+        {
+            "title": "<",
+            "description": "Less than",
+            "type": "object",
+            "properties": {
+              "<": {
+                  "type": "array",
+                  "items": [
+                      {
+                          "$ref": "/expression.json#"
+                      },
+                      {
+                          "$ref": "/expression.json#"
+                      }
+                  ],
+                  "minItems": 2,
+                  "maxItems" : 2,
+                  "additionalItems": false
+              }
+            },
+            "required": ["<"],
+            "additionalProperties": false
+        },
+        {
+            "title": "<=",
+            "description": "Less than or equal to",
+            "type": "object",
+            "properties": {
+                "<=": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "minItems": 2,
+                    "maxItems" : 2,
+                    "additionalItems": false
+                }
+            },
+            "required": ["<="],
+            "additionalProperties": false
+        },
+        {
+          "title": "Between exclusive",
+          "description": "You can use a special case of < to test that one value is between two others",
+          "type": "object",
+          "properties": {
+              "<": {
+                  "type": "array",
+                  "items": [
+                      {
+                          "$ref": "/expression.json#"
+                      },
+                      {
+                          "$ref": "/expression.json#"
+                      },
+                      {
+                          "$ref": "/expression.json#"
+                      }
+                  ],
+                  "minItems": 3,
+                  "maxItems" : 3,
+                  "additionalItems": false
+              }
+          },
+          "required": ["<"],
+          "additionalProperties": false
+      },
+        {
+           "title": "Between inclusive",
+           "description": "You can use a special case of <= to test that one value is between two others",
+           "type": "object",
+           "properties": {
+               "<=": {
+                   "type": "array",
+                   "items": [
+                       {
+                           "$ref": "/expression.json#"
+                       },
+                       {
+                           "$ref": "/expression.json#"
+                       },
+                       {
+                           "$ref": "/expression.json#"
+                       }
+                   ],
+                   "minItems": 3,
+                   "maxItems" : 3,
+                   "additionalItems": false
+               }
+           },
+           "required": ["<="],
+           "additionalProperties": false
+       },
+        {
+            "title": "max",
+            "description": "Returns the maximum from a list of values",
+            "type": "object",
+            "properties": {
+                "max": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["max"],
+            "additionalProperties": false
+        },
+        {
+            "title": "min",
+            "description": "Returns the minimum from a list of values",
+            "type": "object",
+            "properties": {
+                "min": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["min"],
+            "additionalProperties": false
+        },
+        {
+            "title": "+",
+            "description": "Addition",
+            "type": "object",
+            "properties": {
+                "+": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["+"],
+            "additionalProperties": false
+        },
+        {
+            "title": "*",
+            "description": "Multiplication",
+            "type": "object",
+            "properties": {
+                "*": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/expression.json#"
+                    },
+                    "minItems": 2
+                }
+            },
+            "required": ["*"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Negation",
+            "description": "Negation",
+            "type": "object",
+            "properties": {
+                "-": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["-"],
+            "additionalProperties": false
+        },
+        {
+            "title": "-",
+            "description": "Subtraction",
+            "type": "object",
+            "properties": {
+                "-": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["-"],
+            "additionalProperties": false
+        },
+        {
+            "title": "/",
+            "description": "Division",
+            "type": "object",
+            "properties": {
+                "/": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["/"],
+            "additionalProperties": false
+        },
+        {
+            "title": "%",
+            "description": "Modulo",
+            "type": "object",
+            "properties": {
+                "%": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "/expression.json#"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["%"],
+            "additionalProperties": false
+        },
+        {
+            "title": "merge",
+            "description": "Takes one or more arrays, and merges them into one array. If arguments aren’t arrays, they get cast to arrays.",
+            "type": "object",
+            "properties": {
+                "merge": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["merge"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Array Membership",
+            "description": "Tests that the first argument is a member of the array.",
+            "type": "object",
+            "properties": {
+                "in": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "$ref": "#/definitions/any"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["in"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Substring",
+            "description": "Tests that the first argument is a substring of a string.",
+            "type": "object",
+            "properties": {
+                "in": {
+                    "type": "array",
+                    "items": [
+                        {
+                            "$ref": "/expression.json#"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "additionalItems": false
+                }
+            },
+            "required": ["in"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Concatenate",
+            "description": "Concatenate all the supplied arguments. Note that this is not a join or implode operation, there is no “glue” string.",
+            "type": "object",
+            "properties": {
+                "cat": {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["cat"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Log",
+            "description": "Logs the first value to console, then passes it through unmodified.",
+            "type": "object",
+            "properties": {
+                "log":  {
+                    "$ref": "#/definitions/any"
+                }
+            },
+            "required": ["log"],
+            "additionalProperties": false
+        }
+    ]
+}

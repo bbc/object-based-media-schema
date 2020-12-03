@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        { "$ref": "/representation/types.json#/definitions/representation"},
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "description": "Object Class (Fixed Value)",
+                    "enum": [
+                        "REPRESENTATION"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "representation_type": {},
+                "asset_collections": {},
+                "behaviours":{ "$ref": "/representation/types.json#/definitions/behaviours" },
+                "choices": {},
+                "schema_version": {},
+                "duration": {
+                    "type": ["number", "null"]
+                }
+            },
+            "required": ["representation_type", "asset_collections"],
+            "additionalProperties": false
+        }
+    ]
+}

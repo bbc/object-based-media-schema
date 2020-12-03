@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shooting Schedule",
+    "description": "The Shooting Schedule element hold an ordered list of scenes/shots that need to be shot for the story.",
+    "definitions": {
+        "schedule_item": {
+            "properties": {
+                "scheduled_in": {
+                    "$ref": "/core.json#/definitions/time",
+                    "description": "Time that shooting should begin"
+                },
+                "scheduled_out": {
+                    "$ref": "/core.json#/definitions/time",
+                    "description": "Time that shooting should stop"
+                },
+                "actual_in": {
+                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                    "description": "Time that shooting actually starts"
+                },
+                "actual_out": {
+                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                    "description": "Time that shooting actually stops"
+                },
+                "scene": {
+                    "$ref": "/uuids.json#/definitions/scene_uuid",
+                    "description": "Link to scene"
+                },
+                "shot": {
+                    "$ref": "/uuids.json#/definitions/shot_uuid",
+                    "description": "Link to shot within scene"
+                }
+            },
+            "required": [
+                "scene"
+            ]
+        },
+        "schedule_items": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/schedule_item"
+            },
+            "description": "List of schedule items to shoot/have been shot",
+            "minItems": 0
+        },
+        "date": {
+            "$ref": "/core.json#/definitions/date",
+            "description": "Shooting schedule for shooting on date"
+        }
+    }
+}

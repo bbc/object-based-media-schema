@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shooting Schedule as used for creates and updates with the API",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "schedule_items": { "$ref": "/shooting_schedule/types.json#/definitions/schedule_items" },
+                "date": { "$ref": "/shooting_schedule/types.json#/definitions/date" },
+                "production_id": {"$ref": "/uuids.json#/definitions/production_uuid"}
+            },
+            "required": ["schedule_items", "date", "production_id"],
+            "additionalProperties": false
+        }
+    ]
+}

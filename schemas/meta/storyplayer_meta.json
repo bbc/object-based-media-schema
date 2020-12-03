@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Dictionary of extra metadata on the Story object for the StoryPlayer-Harness tool",
+    "properties": {
+        "css": {
+            "type": "string",
+            "description": "A string containing the css that styles the experience on top of the default styling"
+        },
+        "aspect_ratio": {
+            "type": "number",
+            "description": "The aspect ratio to display StoryPlayer in (width/height)"
+        },
+        "saveSession": {
+            "type": "boolean",
+            "description": "If true then StoryPlayer will ask whether the user wants to resume a story"
+        },
+        "taster": {
+            "type": "object",
+            "description": "An object describing whether taster a badge should be shown and what taster id the badge is for",
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Only show badge if true"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url to fetch the taster badge from. This url includes the taster pilot id."
+                },
+                "wide": {
+                    "type": "boolean",
+                    "description": "Should the taster wide badge be used or the taster slim badge?"
+                },
+                "hideDuringExperience": {
+                    "type": "boolean",
+                    "description": "Should the taster badge hide after a user clicks Start?"
+                }
+            },
+            "required": ["active"],
+            "additionalProperties": false
+        },
+        "htmlmeta": {
+            "type": "string",
+            "description": "Deprecated, use metaTags instead"
+        },
+        "htmltitle": {
+            "type": "string",
+            "description": "A string which is put into a <title> tag in the html of the page."
+        },
+        "metaTags": {
+            "type": "array",
+            "description": "Array of meta tags to embed into StoryPlayer page",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "property": {
+                        "type": "string",
+                        "description": "Property key of the meta tag"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name key of the meta tag"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "Content key of the meta tag"
+                    },
+                    "itemProp": {
+                        "type": "string",
+                        "description": "itemProp key of the meta tag"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "htmlmetaString": {
+            "type": "string",
+            "description": "Deprecated, use metaTags instead"
+        },
+        "archived": {
+            "type": "boolean",
+            "description": "If provided then this marks experience as archived and stops analytics"
+        },
+        "archived_version": {
+            "type": "number",
+            "description": "Decides the version of cosmos build to use with experience"
+        },
+        "private": {
+            "type": "boolean",
+            "description": "Forces users to login"
+        },
+        "territories": {
+            "type": "array",
+            "description": "Array of meta tags to embed into StoryPlayer page",
+            "items": {
+                "title": "territory",
+                "type": "string",
+                "description": "An array deciding where experience can be viewed",
+                "enum": [
+                    "uk",
+                    "nonuk"
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}

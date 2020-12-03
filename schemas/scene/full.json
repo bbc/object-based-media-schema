@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Scene in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        { "$ref": "/scene/types.json#/definitions/scenes" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "enum": [
+                        "SCENE"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "location": {},
+                "rushes_complete": {},
+                "quick_tags": {},
+                "production_package_bin": {},
+                "representation_id": {},
+                "narrative_element_id": {},
+                "single_essence_umcp_compositions": {},
+                "shot_ids": {},
+                "schema_version": {}
+            },
+            "additionalProperties": false,
+            "required": [
+                "rushes_complete",
+                "quick_tags",
+                "production_package_bin"
+            ]
+        }
+    ]
+}

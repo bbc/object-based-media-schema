@@ -1,0 +1,127 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Scene Element",
+    "description": "The Scene element holds a collection of production materials for a scene that may also be associated with a single Representation within a Narrative Node.",
+    "definitions": {
+        "sceneBase": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "Free-text of shooting location of scene."
+                },
+                "shot_ids": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/uuids.json#/definitions/shot_uuid"
+                    }
+                },
+                "rushes_complete": {
+                    "type": "boolean",
+                    "description": "Has all the content for the scene been captured?"
+                },
+                "production_package_bin": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/uuids.json#/definitions/production_package_uuid"
+                    },
+                    "description": "List of links to Production Packages",
+                    "minItems": 0
+                },
+                "quick_tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "$ref": "/core.json#/definitions/uuid",
+                                "description": "uuid of quick tag"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Label for quick tag"
+                            },
+                            "color": {
+                                "type": "string",
+                                "description": "Html color code of tag. Eg. #FF0000"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "name",
+                            "color"
+                        ],
+                        "additionalProperties": false
+                    },
+                    "description": "List of quick select tags which can be used for annotations",
+                    "minItems": 0
+                }
+            }
+        },
+        "scenes": {
+            "anyOf": [
+                {
+                    "allOf": [
+                        {"$ref": "#/definitions/sceneBase" },
+                        {
+                            "not": {
+                                "type": "object",
+                                "required": [
+                                    "representation_id"
+                                ]
+                            }
+                        },
+                        {
+                            "not": {
+                                "type": "object",
+                                "required": [
+                                    "narrative_element_id"
+                                ]
+                            }
+                        },
+                        {
+                            "not": {
+                                "type": "object",
+                                "required": [
+                                    "single_essence_umcp_compositions"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "allOf": [
+                        { "$ref": "#/definitions/sceneBase" },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "representation_id": {
+                                    "$ref": "/uuids.json#/definitions/representation_uuid",
+                                    "description": "Link to Representation element that is associated with this element."
+                                },
+                                "narrative_element_id": {
+                                    "$ref": "/uuids.json#/definitions/narrative_element_uuid",
+                                    "description": "Link to Narrative element that is associated with this element."
+                                },
+                                "single_essence_umcp_compositions": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "/core.json#/definitions/uuid"
+                                    },
+                                    "description": "Ordered list of umcp compositions for single essence parts of Representation",
+                                    "minItems": 0
+                                }
+                            },
+                            "required": [
+                                "representation_id",
+                                "narrative_element_id",
+                                "single_essence_umcp_compositions"
+                            ]
+                        }
+                    ]
+
+                }
+            ]
+        }
+    }
+}

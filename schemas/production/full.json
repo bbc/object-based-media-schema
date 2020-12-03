@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Production in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": { },
+                "object_class": {
+                    "type": "string",
+                    "enum": [
+                        "PRODUCTION"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "story_id": {"$ref": "/uuids.json#/definitions/story_uuid"},
+                "production_package_bin": { "$ref": "/production/types.json#/definitions/production_package_bin" },
+                "sources_group": { "$ref": "/production/types.json#/definitions/sources_group" },
+                "shooting_schedules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/uuids.json#/definitions/shooting_schedule_uuid"
+                    } },
+                "scenes":  {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/uuids.json#/definitions/scene_uuid"
+                    } },
+                "previous_shot": { "$ref": "/production/types.json#/definitions/shot_link" },
+                "next_shot": { "$ref": "/production/types.json#/definitions/shot_link" },
+                "schema_version": {}
+            },
+            "required": ["production_package_bin", "scenes", "shooting_schedules"],
+            "additionalProperties": false
+        }
+    ]
+}

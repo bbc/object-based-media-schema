@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+const validator = require('../lib/validate').validator
+
+const fs = require('fs');
+const path = require('path');
+const process = require('process');
+
+
+const SCHEMA_DIR = path.resolve(__dirname, '..', 'schemas');
+
+if (process.argv.length < 4) {
+    console.error(`Usage: ${process.argv[1]} <schema> <file> [<file> ...]`);
+    process.exit(1);
+}
+
+const SCHEMA_TYPE = process.argv[2];
+
+if (!fs.existsSync(path.join(SCHEMA_DIR, `${SCHEMA_TYPE}.json`))) {
+    console.error(`Usage: ${process.argv[1]} <schema> <file> [<file> ...]`);
+    console.error(`       ${SCHEMA_TYPE} is not a known schema type`);
+    process.exit(1);
+}
+
+const filesToValidate = process.argv.slice(3);
+
+function loadJson(filename) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filename, 'utf8', (file_err, data) => {
+            if (file_err) {
+                reject([file_err]);
+            } else {
+                try {
+                    resolve(JSON.parse(data));
+                } catch (json_err) {
+                    reject([json_err]);
+                }
+            }
+        });
+    });
+}
+
+Promise.all(
+    filesToValidate.map(
+        filename => loadJson(filename)
+            .then(object => validator(SCHEMA_TYPE, object))
+            .then(() => ({ valid: true }), (errors) => ({ valid: false, errors }))
+            .then(result => ({ filename, result }))
+    )
+).then(
+    results => {
+        results.forEach(({ filename, result }) => {
+            if (result.valid) {
+                console.log(`👍   ${filename}`);
+            } else {
+                console.log(`❌   ${filename}`);
+                result.errors.forEach(error => {
+                    console.log(`    ${error.stack}`)
+                });
+                console.log();
+            }
+        });
+    }
+);

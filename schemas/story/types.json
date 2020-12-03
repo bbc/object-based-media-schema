@@ -1,0 +1,160 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Story",
+    "description": "The Story Element is the top-level element. It either represents a whole standalone experience, or a smaller experience which is referenced in another story. It can be extended with other attributes",
+    "definitions": {
+        "beginnings": {
+            "type": "array",
+            "description": "Array of narrative element UUIDs that point to possible entrypoints into the narrative graph. Stored as a pair of UUID, and a condition. A beginning is chosen based on the first one whose condition evaluates to true",
+            "items": {
+                "title": "beginning",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "/uuids.json#/definitions/story_beginning_uuid",
+                        "description": "UUID of this Story Beginning"
+                    },
+                    "narrative_element_id": {
+                        "description": "UUID of narrative_element this link points to",
+                        "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+                    },
+                    "condition": {
+                        "$ref": "/expression.json#",
+                        "description": "Boolean operation to determine if link should be followed depending on story state"
+                    }
+                },
+                "required": ["narrative_element_id", "condition"],
+                "additionalProperties": false
+            }
+        },
+        "variables": {
+            "type": "object",
+            "patternProperties": {
+                ".{1,}": {
+                    "type": "object",
+                    "allOf": [
+                        { "$ref": "#/definitions/variable_types" },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "default_value": {
+                                    "description": "The default value for the variable"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "The description of the what the variable describes"
+                                },
+                                "variable_type": {
+                                    "description": "The type of the variable"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "variable_types": {
+            "type": "object",
+            "oneOf": [
+                {
+                    "title": "Boolean variable",
+                    "description": "Boolean variable",
+                    "type": "object",
+                    "properties": {
+                        "variable_type": {
+                            "type": "string",
+                            "enum": [
+                                "boolean"
+                            ]
+                        },
+                        "description": {},
+                        "default_value": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": ["default_value", "variable_type"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "List variable",
+                    "description": "List variable",
+                    "type": "object",
+                    "properties": {
+                        "variable_type": {
+                            "type": "string",
+                            "enum": [
+                                "list"
+                            ]
+                        },
+                        "description": {},
+                        "default_value": {
+                            "type": "string"
+                        },
+                        "values": {
+                            "description": "Values that this variable can be",
+                            "type": "array",
+                            "items": {
+                                "title": "value",
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": ["default_value", "variable_type", "values"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Number variable",
+                    "description": "Number variable",
+                    "type": "object",
+                    "properties": {
+                        "variable_type": {
+                            "type": "string",
+                            "enum": [
+                                "number"
+                            ]
+                        },
+                        "description": {},
+                        "default_value": {
+                            "type": "number"
+                        },
+                        "range": {
+                            "type": "object",
+                            "description": "Constraints on this number",
+                            "properties": {
+                                "min_val": {
+                                    "type": "number",
+                                    "description": "Minimum number this variable can be"
+                                },
+                                "max_val": {
+                                    "type": "number",
+                                    "description": "Maximum number this variable can be"
+                                }
+                            }
+                        }
+                    },
+                    "required": ["default_value", "variable_type"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "String variable",
+                    "description": "String variable",
+                    "type": "object",
+                    "properties": {
+                        "variable_type": {
+                            "type": "string",
+                            "enum": [
+                                "string"
+                            ]
+                        },
+                        "description": {},
+                        "default_value": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["default_value", "variable_type"],
+                    "additionalProperties": false
+                }
+            ]
+        }
+    }
+}

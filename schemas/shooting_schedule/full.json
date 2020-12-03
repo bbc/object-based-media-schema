@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shooting Schedule in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "enum": [
+                        "SHOOTING_SCHEDULE"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "schedule_items": { "$ref": "/shooting_schedule/types.json#/definitions/schedule_items" },
+                "date": { "$ref": "/shooting_schedule/types.json#/definitions/date" },
+                "schema_version": {}
+            },
+            "required": ["schedule_items", "date"],
+            "additionalProperties": false
+        }
+    ]
+}

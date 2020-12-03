@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "representations": {
+            "description": "An ordered array of representation_collection_representations in which the first one to satisfy it's conditions has it's linked representation played",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "title": "representation_collection_representation",
+                "properties": {
+                    "id": {
+                        "$ref": "/uuids.json#/definitions/representation_collection_representation_uuid",
+                        "description": "UUID of this Representation Collection Representation"
+                    },
+                    "representation_id": {"$ref": "/uuids.json#/definitions/representation_uuid"},
+                    "condition": {
+                        "$ref": "/expression.json#",
+                        "description": "Condition that determines whether this representation is played"
+                    }
+                },
+                "required": ["representation_id", "condition"],
+                "additionalProperties": false
+            }
+        }
+    }
+}

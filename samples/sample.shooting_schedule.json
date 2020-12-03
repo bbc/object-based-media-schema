@@ -1,0 +1,20 @@
+{
+    "id": "bb4816eb-0a2c-47ad-81ab-3e7be2560d5b",
+    "object_class": "SHOOTING_SCHEDULE",
+    "name": "Day 1 Schedule",
+    "description": "Filming the fish",
+    "version": "0:0",
+    "tags": {},
+    "schedule_items": [
+        {
+            "scheduled_in": "14:00",
+            "scheduled_out": "15:00",
+            "actual_in": "0:0",
+            "actual_out": "0:0",
+            "scene": "8ade8caf-a71c-4224-9b04-e454d2dc5030",
+            "shot": "64863c73-0e7c-4446-a883-defe5fa78942"
+        }
+    ],
+    "date": "10/12/2017",
+    "schema_version":"0.2.0"
+}

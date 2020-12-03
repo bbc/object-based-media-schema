@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Story in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "description": "Object Class (Fixed Value)",
+                    "enum": [
+                        "STORY"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "beginnings": { "$ref": "/story/types.json#/definitions/beginnings" },
+                "narrative_element_ids": {
+                    "type": "array",
+                    "description": "A list of narrative elements UUIDs that this story contains. This data could be obtained by starting with each beginning and following the paths through the graph but we avoid this complexity by storing it specifically in the Story object.",
+                    "items": {
+                        "title": "narrative_element_id",
+                        "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+                    }
+                },
+                "variables": { "$ref": "/story/types.json#/definitions/variables" },
+                "schema_version": {}
+            },
+            "required": ["beginnings", "narrative_element_ids", "variables"],
+            "additionalProperties": false
+        }
+    ]
+}

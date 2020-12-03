@@ -1,0 +1,62 @@
+{
+    "id": "a45c17fb-2d9c-4d5d-9e62-a6285b9da9dc",
+    "object_class": "PRODUCTION_PACKAGE",
+    "name": "",
+    "description": "",
+    "version": "0:0",
+    "tags": {},
+    "uri": "urn:x-ipstudio:package:4981f2d3-811d-4e53-80f7-5cb225427710:rush",
+    "annotations": [
+        {
+            "id": "eff9df64-1b63-452b-bb7c-6f7f5d71d06f",
+            "type": "TEXT_LABEL",
+            "body": {
+                "start": "0:0",
+                "end": "10:0",
+                "label": "Tag Label Here"
+            }
+        },
+        {
+            "id": "0f081675-007f-4ace-9611-85f3554206e3",
+            "type": "QUALITY",
+            "body": {
+                "good": true,
+                "label": "Nice Take, everyone hit their lines."
+            }
+        },
+        {
+            "id": "ef5fcccb-b48f-4348-bd62-ccc334cbae5c",
+            "type": "PRODUCTION_PACKAGE",
+            "body": {
+                "start": "11:0",
+                "end": "20:0",
+                "label": "Voice note about fluffed lines",
+                "production_package": "b427015c-7969-4a1e-96e5-b3598db9a110",
+                "production_package_version": "0:0"
+            }
+        },
+        {
+          "id": "f23cc4d2-69e8-4592-9c85-00c2601171c3",
+            "type": "PRODUCTION_SCRIPT",
+            "body": {
+                "start": "30:0",
+                "end": "50:0",
+                "label": "Tagged script",
+                "production_package": "990dd5ba-8673-4d01-aa7f-db56d4225284",
+                "production_package_version": "0:0",
+                "in_char": 10,
+                "out_char": 15
+            }
+        },
+        {
+          "id": "56995301-8f41-4ba1-b301-30861d1a8dd1",
+            "type": "LOCATION",
+            "body": {
+                "start": "30:0",
+                "end": "50:0",
+                "gps": "53.444273,-2.277372"
+            }
+        }
+    ],
+    "schema_version":"0.2.0"
+}

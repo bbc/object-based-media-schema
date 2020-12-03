@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Narrative Element link as used for creates with the API",
+    "type": "object",
+    "description": "Link",
+    "oneOf": [{
+            "type": "object",
+            "properties": {
+                "link_position": {
+                    "type": "number",
+                    "description": "Position to insert link into array of links. If property not provided then link is inserted at the end of the array"
+                },
+                "target_narrative_element_id": {
+                    "description": "UUID of narrative_element this link points to",
+                    "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+                },
+                "condition": {
+                    "$ref": "/expression.json#",
+                    "description": "A boolean expression written in JsonLogic, which includes the JSONLogic data components"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "[optional] free-text description of this link"
+                },
+                "link_type": {
+                    "type": "string",
+                    "enum": [
+                        "NARRATIVE_ELEMENT"
+                    ],
+                    "description": "Describes the next thing to play is a narrative element following a 'true' result from 'condition' statement."
+                }
+            },
+            "required": [
+                "condition",
+                "link_type",
+                "target_narrative_element_id"
+            ],
+            "additionalProperties": false
+        },
+        {
+            "type": "object",
+            "properties": {
+                "condition": {
+                    "$ref": "/expression.json#",
+                    "description": "A boolean expression written in JsonLogic, which includes the JSONLogic data components"
+                },
+                "link_type": {
+                    "type": "string",
+                    "enum": [
+                        "CHOOSE_BEGINNING",
+                        "END_STORY"
+                    ],
+                    "description": "CHOOSE_BEGINNING: return to parent story and choose a new beginning. END_STORY: This will either end the experience, or pass control back to the narrative element holding this story"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "[optional] free-text description of this link"
+                }
+            },
+            "required": [
+                "condition",
+                "link_type"
+            ],
+            "additionalProperties": false
+        }
+    ]
+
+    }

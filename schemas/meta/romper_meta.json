@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Dictionary of extra metadata for the StoryPlayer tool",
+    "properties": {
+        "in": {
+            "type": "number",
+            "description": "(Asset Collection Only) time in seconds to start media from"
+        },
+        "out": {
+            "type": "number",
+            "description": "(Asset Collection Only) time in seconds to end media at"
+        },
+        "dog": {
+            "type": "object",
+            "description": "(Story Only) Image to put over content",
+            "properties": {
+                "position": {
+                    "type": "object",
+                    "description": "",
+                    "properties": {
+                        "top": {
+                            "type": "number",
+                            "description": "css top property for dog in %"
+                        },
+                        "left": {
+                            "type": "number",
+                            "description": "css left property for dog in %"
+                        },
+                        "width": {
+                            "type": "number",
+                            "description": "css width property for dog in %"
+                        },
+                        "height": {
+                            "type": "number",
+                            "description": "css height property for dog in %"
+                        }
+                    }
+                },
+                "asset_collection_id": {
+                    "$ref": "/uuids.json#/definitions/representation_collection_uuid",
+                    "description": "uuid of image asset collection to use for dog"
+                }
+            }
+        },
+        "onLaunch": {
+            "description": "(Story Only) Describes options to set before or on starting player",
+            "type": "object",
+            "properties": {
+                "background_art_asset_collection_id": {
+                    "$ref": "/uuids.json#/definitions/representation_collection_uuid",
+                    "description": "uuid of image asset collection to use as starting image. Overwrites background_art."
+                },
+                "button_class": {
+                    "type": "string",
+                    "description": "css class to apply to button"
+                },
+                "text": {
+                    "type": "string",
+                    "description": "Deprecated as button doesn't have text any more"
+                },
+                "hide_narrative_buttons": {
+                    "type": "boolean",
+                    "description": "Hides the Previous and Next Buttons"
+                },
+                "background_art": {
+                    "type": "string",
+                    "format":"uri",
+                    "description": "Url pointing to image to use as starting image."
+                },
+                "privacy_notice": {
+                    "type": "string",
+                    "description": "Text to display as a privacy notice"
+                }
+            }
+        },
+        "data_requirements": {
+            "description": "(Story Only) Describes what data can be collected",
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "boolean",
+                    "description": "Should location data be collected"
+                }
+            }
+        },
+        "requirements": {
+            "type": "array",
+            "description": "(Story Only) An array of requirements that must be satisfied for the story to play",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "logic": {
+                        "$ref": "/expression.json#",
+                        "description": "A json logic expression which is evaluated using injected browser capability variables"
+                    },
+                    "errorMsg": {
+                        "type": "string",
+                        "description": "Error message to show when the logic above fails"
+                    }
+                },
+                "required": ["logic", "errorMsg"],
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": true
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation collection as used for creates and updates with the API",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {}
+            },
+            "additionalProperties": false
+        }
+    ]
+}

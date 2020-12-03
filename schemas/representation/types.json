@@ -1,0 +1,910 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation",
+    "definitions": {
+        "asset_collections_behaviours": {
+            "type": "array",
+            "description": "A mapping between UUIDs used in behaviours and asset collections",
+            "items": {
+                "title": "Asset Collection Behaviour Mapping",
+                "type": "object",
+                "properties": {
+                    "behaviour_asset_collection_mapping_id": {
+                        "$ref": "/uuids.json#/definitions/representation_behaviour_asset_collection_mapping_uuid",
+                        "description": "UUID of this behaviour asset collection mapping"
+                    },
+                    "asset_collection_id": {
+                        "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                    }
+                },
+                "required": ["behaviour_asset_collection_mapping_id", "asset_collection_id"],
+                "additionalProperties": false
+            }
+        },
+        "asset_collections_background": {
+            "type": "array",
+            "description": "Asset collections to play in background",
+            "items": {
+                "title": "Background Asset Collection UUID",
+                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+            }
+        },
+        "asset_collections_icon": {
+            "type": "object",
+            "description": "Specifies the icons to use for chapter navigation in a linear experience",
+            "properties": {
+                "active_id": {
+                    "$ref": "/uuids.json#/definitions/asset_collection_uuid",
+                    "description": "The UUID of an asset collection to use as the currently selected chapter"
+                },
+                "default_id": {
+                    "$ref": "/uuids.json#/definitions/asset_collection_uuid",
+                    "description": "The UUID of an asset collection to use as for unselected chapters"
+                }
+            },
+            "additionalProperties": false
+        },
+        "representation": {
+            "type": "object",
+            "oneOf": [
+                {
+                "title": "Simple AV",
+                "description": "A representation for showing standard audio/video content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:simple-av/v1.0"
+                        ]
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                            },
+                            "background_ids": {
+                                "$ref": "#/definitions/asset_collections_background"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type"]
+            },
+            {
+                "title": "Immersive",
+                "description": "A representation for showing 360 and immersive content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:immersive/v1.0"
+                        ]
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                            },
+                            "background_ids": {
+                                "$ref": "#/definitions/asset_collections_background"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type"]
+            },
+            {
+                "title": "Simple Audio",
+                "description": "A representation for showing audio only content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:simple-audio/v1.0"
+                        ]
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                            },
+                            "background_ids": {
+                                "$ref": "#/definitions/asset_collections_background"
+                            },
+                            "background_image": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type"]
+
+            },
+            {
+                "title": "Markdown",
+                "description": "A representation for showing text content in markdown format",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:markdown/v1.0"
+                        ]
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type"]
+
+            },
+            {
+                "title": "Image",
+                "description": "A representation for showing image content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:image/v1.0"
+                        ]
+                    },
+                    "duration": {
+                        "type": "number",
+                        "description": "The number of seconds for which an image is displayed before moving on.  If negative, it remains up until user moves to next element"
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid",
+                                "description": "UUID pointing to image"
+                            },
+                            "background_ids": {
+                                "$ref": "#/definitions/asset_collections_background"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type", "duration"]
+
+            },
+            {
+                "title": "Placeholder",
+                "description": "A representation to be at some point replaced by other content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:placeholder/v1.0"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Some text that describes what this placeholder is standing in for"
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type", "description"]
+
+            },
+            {
+                "title": "Image 360",
+                "description": "A representation for showing 360 image content",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": [
+                            "urn:x-object-based-media:representation-types:image360/v1.0"
+                        ]
+                    },
+                    "duration": {
+                        "type": "number",
+                        "description": "The number of seconds for which an image is displayed before moving on.  If negative, it remains up until user moves to next element"
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "foreground_id": {
+                                "$ref": "/uuids.json#/definitions/asset_collection_uuid",
+                                "description": "UUID pointing to 360 image"
+                            },
+                            "background_ids": {
+                                "$ref": "#/definitions/asset_collections_background"
+                            },
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "required": ["representation_type"]
+            },
+            {
+                "title": "Switchable",
+                "description": "A representation for showing multiple synced representations",
+                "type": "object",
+                "properties": {
+                    "representation_type": {
+                        "type": "string",
+                        "enum": ["urn:x-object-based-media:representation-types:switchable/v1.0"]
+                    },
+                    "asset_collections": {
+                        "type": "object",
+                        "properties": {
+                            "icon": {
+                                "$ref": "#/definitions/asset_collections_icon"
+                            },
+                            "behaviours": {
+                                "$ref": "#/definitions/asset_collections_behaviours"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "choices": { "$ref": "#/definitions/choices" }
+                },
+                "required": ["representation_type"]
+            }
+            ]
+        },
+        "choices": {
+            "type": "array",
+            "items": {
+                "title": "Representation Choice",
+                "type":"object",
+                "properties": {
+                    "id":{
+                        "$ref": "/uuids.json#/definitions/representation_choice_uuid",
+                        "description": "UUID of this Representation Choice"
+                    },
+                    "label": {
+                        "type":"string",
+                        "description": "(Deprecated) Not used"
+                    },
+                    "choice_representation_id": { "$ref": "/uuids.json#/definitions/representation_uuid" }
+                },
+                "required": [
+                    "choice_representation_id"
+                ],
+                "additionalProperties": false
+            },
+            "description": "Array of synced representations which the user can choose between."
+        },
+        "behaviour_types": {
+            "type":"object",
+            "allOf": [{
+                "properties": {
+                    "id": {
+                        "$ref": "/uuids.json#/definitions/representation_behaviour_uuid",
+                        "description": "UUID of this Behaviour"
+                    },
+                    "type": {}
+                },
+                "required": ["id", "type"]
+            },{
+                "anyOf": [
+                {
+                    "title": "Pause Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type": {
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:pause/v1.0"
+                            ]
+                        },
+                        "pauseTime": {
+                            "description": "Number of seconds to pause for. -1 indicates an unlimited pause",
+                            "type": "number",
+                            "minimum": -1
+                        }
+                    },
+                    "required": ["pauseTime"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Opaque Colour Overlay Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:colouroverlay/v1.0"
+                            ]
+
+                        },
+                        "colour": {
+                            "description": "In form rgba(R, G, B, A)",
+                            "type":"string"
+                        }
+                    },
+                     "required": ["colour"],
+                     "additionalProperties": false
+                },
+                {
+                    "title": "Show Image Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:showimage/v1.0"
+                            ]
+                        },
+                        "image": {
+                            "$ref": "/uuids.json#/definitions/representation_behaviour_asset_collection_mapping_uuid",
+                            "description": "Behaviour Id for mapping to Asset Collection to be used as Image."
+                        }
+                    },
+                   "required": ["image"],
+                   "additionalProperties": false
+                },
+                {
+                    "title": "Show Social Sharing Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:socialmodal/v1.0"
+                            ]
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Title for the modal"
+                        },
+                        "css_class": {
+                            "type": "string",
+                            "description": "Class to apply for the modal"
+                        },
+                        "share_text": {
+                            "type": "string",
+                            "description": "Text to accompany the shared link"
+                        },
+                        "share_url": {
+                            "type": "string",
+                            "description": "Link to share. If not included, will share experience link"
+                        },
+                        "platforms": {
+                            "type": "array",
+                            "description": "List of platforms to offer",
+                            "items": {
+                                "title": "Platform",
+                                "type": "string",
+                                "enum": [ "twitter", "facebook", "email" ]
+                            }
+                        },
+                        "position": {
+                            "type": "object",
+                            "description": "Position and size of modal on the screen, using percentages.  If not given, the renderer will place the modal automatically.",
+                            "properties": {
+                                "top": {
+                                    "description": "Distance of top edge of popup from top of player (%)",
+                                    "type": "number"
+                                },
+                                "left": {
+                                    "description": "Distance of left edge of popup from left of player (%)",
+                                    "type": "number"
+                                },
+                                "width": {
+                                    "description": "Width of popup, in %",
+                                    "type": "number"
+                                },
+                                "height": {
+                                    "description": "Height of popup (%)",
+                                    "type": "number"
+                                },
+                                "right": {
+                                    "description": "Distance of right edge of popup from right of player (%)",
+                                    "type": "number"
+                                },
+                                "bottom": {
+                                    "description": "Distance of top edge of popup from bottom of player (%)",
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                   "required": ["share_text", "platforms"],
+                   "additionalProperties": false
+                },
+                {
+                    "title": "Show Text Overlay Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:textoverlay/v1.0"
+                            ]
+                        },
+                        "text": {
+                            "type": "string",
+                            "description": "Text content to be rendered"
+                        },
+                        "css_class": {
+                            "type": "string",
+                            "description": "Class to apply for the overlay"
+                        },
+                        "font_size": {
+                            "type": "number",
+                            "description": "Font size (percent) to be applied to the text"
+                        },
+                        "background_colour": {
+                            "type": "string",
+                            "description": "Colour to be applied as background to the overlay, as valid CSS string"
+                        },
+                        "position": {
+                            "type": "object",
+                            "description": "Position and size of overlay on the screen, using percentages.  If not given, the renderer will place the text in the centre of the player with the background filling the player.",
+                            "properties": {
+                                "top": {
+                                    "description": "Distance of top edge of overlay from top of player (%)",
+                                    "type": "number"
+                                },
+                                "left": {
+                                    "description": "Distance of left edge of overlay from left of player (%)",
+                                    "type": "number"
+                                },
+                                "width": {
+                                    "description": "Width of overlay, in %",
+                                    "type": "number"
+                                },
+                                "height": {
+                                    "description": "Height of overlay (%)",
+                                    "type": "number"
+                                },
+                                "right": {
+                                    "description": "Distance of right edge of overlay from right of player (%)",
+                                    "type": "number"
+                                },
+                                "bottom": {
+                                    "description": "Distance of top edge of overlay from bottom of player (%)",
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                   "required": ["text"],
+                   "additionalProperties": false
+                },
+                {
+                    "title": "Manipulate Variables Behaviour",
+                    "properties": {
+                        "id": {
+                            "$ref": "/uuids.json#/definitions/representation_behaviour_uuid"
+                        },
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:manipulatevariable/v1.0"
+                            ]
+    
+                        },
+                        "target_variable": {
+                            "description": "Name of variable in which to store the result",
+                            "type": "string"
+                        },
+                        "operation": {
+                            "description": "JSON logic expression",
+                            "$ref": "/expression.json#"
+                        }
+                    },
+                     "required": ["type", "target_variable", "operation"],
+                     "additionalProperties": false
+                },
+                {
+                    "title": "Show Popup with Link Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:linkoutmodal/v1.0"
+                            ]
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "Title for the modal"
+                        },
+                        "css_class": {
+                            "type": "string",
+                            "description": "Class to apply for the modal"
+                        },
+                        "before_text": {
+                            "type": "string",
+                            "description": "Text to go before the link"
+                        },
+                        "link_text": {
+                            "type": "string",
+                            "description": "Text for the shared link"
+                        },
+                        "after_text": {
+                            "type": "string",
+                            "description": "Text to go after the link"
+                        },
+                        "link_url": {
+                            "type": "string",
+                            "description": "Link to follow"
+                        },
+                        "open_in_new_tab": {
+                            "type": "boolean",
+                            "description": "If true, link will be opened in new tab, if false in existing tab"
+                        },
+                        "position": {
+                            "type": "object",
+                            "description": "Position and size of modal on the screen, using percentages.  If not given, the renderer will place the modal automatically.",
+                            "properties": {
+                                "top": {
+                                    "type": "number",
+                                    "description": "Distance of top edge of popup from top of player (%)"
+                                },
+                                "left": {
+                                    "type": "number",
+                                    "description": "Distance of left edge of popup from left of player (%)"
+                                },
+                                "width": {
+                                    "type": "number",
+                                    "description": "Width of popup, in %"
+                                },
+                                "height": {
+                                    "type": "number",
+                                    "description": "Height of popup (%)"
+                                },
+                                "right": {
+                                    "type": "number",
+                                    "description": "Distance of right edge of popup from right of player (%)"
+                                },
+                                "bottom": {
+                                    "type": "number",
+                                    "description": "Distance of top edge of popup from bottom of player (%)"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                   "required": ["type", "link_text", "link_url"],
+                   "additionalProperties": false
+                },
+                {
+                    "title": "Exit Fullscreen Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type": {
+                            "type": "string",
+                            "enum": ["urn:x-object-based-media:representation-behaviour:exit-fullscreen/v1.0"]
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Blur Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:blur/v1.0"
+                            ]
+                        },
+                        "blur": {
+                            "type":"number",
+                            "description": "blur px amount",
+                            "minimum": 0
+                        }
+                    },
+                    "required": ["blur"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Show Variable Panel",
+                    "properties": {
+                        "id": {},
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:showvariablepanel/v1.0"
+                            ]
+                        },
+                        "panel_label": {
+                            "type": "string",
+                            "description": "Label to display when panel is displayed (question or prompt)"
+                        },
+                        "background_colour": {
+                            "type": "string",
+                            "description": "Background colour for the panel as html string"
+                        },
+                        "variables": {
+                            "type": "array",
+                            "description": "List of variables",
+                            "items": {
+                                "title": "Variable",
+                                "type": "object",
+                                "properties": {
+                                    "variable_name": {
+                                        "type": "string",
+                                        "description": "Name of the variable as defined in the top level story object"
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "Human readable label to be shown by the variable controller"
+                                    },
+                                    "min_label": {
+                                        "type": "string",
+                                        "description": "Human readable label to be shown at the minimum end of a number range.  If null, no label is shown"
+                                    },
+                                    "max_label": {
+                                        "type": "string",
+                                        "description": "Human readable label to be shown at the maximum end of a number range.  If null, no label is shown"
+                                    },
+                                    "precise_entry": {
+                                        "type": "boolean",
+                                        "description": "Boolean to determine whether the exact value of a number can be seen/set by the user: if true, they can"
+                                    }
+                                },
+                                "required": ["variable_name", "label"]
+                            }
+                        }
+                    },
+                    "required": ["variables"],
+                    "additionalProperties": false
+                },
+                {
+                    "title": "Show Link Choices",
+                    "properties": {
+                        "id": {},
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:showlinkchoices/v1.0"
+                            ]
+                        },
+                        "show_ne_to_end": {
+                            "type": "boolean",
+                            "description": "When a choice is made, does the current narrative element play to its end or does the story move immediately"
+                        },
+                        "one_shot": {
+                            "type": "boolean",
+                            "description": "When a choice is made, do the options disappear, or do they remain so the user can change their mind"
+                        },
+                        "disable_controls": {
+                            "type": "boolean",
+                            "description": "When the choice is visible, are the transport controls and back button disabled, or can they still be used"
+                        },
+                        "show_time_remaining": {
+                            "type": "boolean",
+                            "description": "Does the UI reflect to user how long they have left"
+                        },
+                        "overlay_class": {
+                            "type": "string",
+                            "description": "css class to apply to overlay"
+                        },
+                        "force_choice": {
+                            "type": "boolean",
+                            "description": "Does the user have to make a decision, or can they let default run"
+                        },
+                        "show_if_one_choice": {
+                            "type": "boolean",
+                            "description": "Do the icons show even if there is only one choice"
+                        },
+                        "link_icons": {
+                            "type": "array",
+                            "description": "List of icons to use to represent each link",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "target_narrative_element_id": {
+                                        "description": "UUID of the narrative element the link points to",
+                                        "$ref": "/uuids.json#/definitions/narrative_element_uuid"
+                                    },
+                                    "image": {
+                                        "description": "Behaviour Id for mapping to Asset Collection.",
+                                        "$ref": "/core.json#/definitions/uuid"
+                                    },
+                                    "text": {
+                                        "description": "Text to appear as icon.",
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "object",
+                                        "properties": {
+                                            "three_d": {
+                                                "description": "position and size of icon in 3d coordinate system for immersive representations",
+                                                "type": "object",
+                                                "properties": {
+                                                    "phi": {
+                                                        "type": "number",
+                                                        "description": "Polar coordinate - azimuth (longitude of icon)"
+                                                    },
+                                                    "theta": {
+                                                        "type": "number",
+                                                        "description": "Polar coordinate - altitude (latitude of icon)"
+                                                    },
+                                                    "radius": {
+                                                        "type": "number",
+                                                        "description": "Polar coordinate - radius (distance of icon)"
+                                                    },
+                                                    "width": {
+                                                        "type": "number",
+                                                        "description": "Width of icon, in 3d spatial units"
+                                                    },
+                                                    "height": {
+                                                        "type": "number",
+                                                        "description": "Height of icon, in 3d spatial units"
+                                                    }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": ["phi", "theta", "radius"]
+                                            },
+                                            "two_d": {
+                                                "description": "position and size of icon on the screen, using percentages",
+                                                "type": "object",
+                                                "properties": {
+                                                    "top": {
+                                                        "type": "number",
+                                                        "description": "Distance of top edge of icon from top of player (%)"
+                                                    },
+                                                    "left": {
+                                                        "type": "number",
+                                                        "description": "Distance of left edge of icon from left of player (%)"
+                                                    },
+                                                    "width": {
+                                                        "type": "number",
+                                                        "description": "Width of icon, in %"
+                                                    },
+                                                    "height": {
+                                                        "type": "number",
+                                                        "description": "Height of icon (%)"
+                                                    }
+                                                },
+                                                "additionalProperties": false,
+                                                "anyOf": [
+                                                    {
+                                                        "required": ["top", "left", "width"]
+                                                    },
+                                                    {
+                                                        "required": ["top", "left", "height"]
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "oneOf": [
+                                            {
+                                                "required": ["three_d"]
+                                            },
+                                            {
+                                                "required": ["two_d"]
+                                            }
+                                        ]
+                                    }
+                                },
+                                "oneOf": [
+                                    {
+                                        "required": ["target_narrative_element_id", "image"]
+                                    },
+                                    {
+                                        "required": ["target_narrative_element_id", "text"]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "additionalProperties": false
+                }
+                ]
+            }]
+        },
+        "behaviours": {
+            "type": "object",
+            "properties": {
+                "completed": {
+                    "type": "array",
+                    "items": {
+                        "title": "Completed Behaviour",
+                        "$ref": "#/definitions/behaviour_types"
+                    },
+                    "minItems": 1
+                },
+                "started": {
+                    "type": "array",
+                    "items": {
+                        "title": "Started Behaviour",
+                        "$ref": "#/definitions/behaviour_types"
+                    },
+                    "minItems": 1
+                },
+                "during": {
+                    "type": "array",
+                    "items": {
+                        "title": "During Behaviour",
+                        "type": "object",
+                        "properties": {
+                            "behaviour": {
+                                "$ref": "#/definitions/behaviour_types"
+                            },
+                            "start_time": {
+                                "description": "Time, in seconds after start of NE media that behaviour takes effect",
+                                "type": "number"
+                            },
+                            "duration": {
+                                "description": "Time, in seconds that the behaviour lasts",
+                                "type": "number"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": ["behaviour", "start_time"]
+                    },
+                    "minItems": 1
+                }
+            },
+            "additionalProperties": false
+
+        }
+    }
+}

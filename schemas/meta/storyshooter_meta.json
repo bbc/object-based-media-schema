@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Dictionary of extra metadata for the StoryShooter tool",
+    "properties": {
+    },
+    "additionalProperties": true
+}

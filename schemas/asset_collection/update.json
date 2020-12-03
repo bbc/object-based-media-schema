@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Asset Collection as used for creates and updates with the API",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        { "$ref": "/asset_collection/types.json#/definitions/assets" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "asset_collection_type": {},
+                "assets": {},
+                "loop": {}
+            },
+            "additionalProperties": false,
+            "required":["asset_collection_type"]
+        }
+    ]
+}

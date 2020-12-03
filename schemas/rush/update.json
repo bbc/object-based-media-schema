@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Rushes",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/update_base" },
+        {
+            "type": "object",
+            "properties": {
+                "name": {},
+                "description": {},
+                "tags": {},
+                "meta": {},
+                "take_number": {"$ref": "/rush/types.json#/definitions/take_number" },
+                "production_package_id": {"$ref": "/rush/types.json#/definitions/production_package_id" },
+                "in_progress": {"$ref": "/rush/types.json#/definitions/in_progress" },
+                "shot_id": {"$ref": "/uuids.json#/definitions/shot_uuid"}
+            },
+            "required": [
+                "in_progress",
+                "take_number",
+                "production_package_id",
+                "shot_id"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}

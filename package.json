@@ -1,0 +1,45 @@
+{
+    "name": "object-based-media-schema",
+    "version": "1.0.0",
+    "description": "JSON schemas which describe a common language for object-based media",
+    "main": "lib/validate.js",
+    "scripts": {
+        "test": "./bin/validate_samples.sh",
+        "schemaUI": "nodemon -L --watch schemas/ --exec node schemaUI/server.js"
+    },
+    "bin": {
+        "object-based-media-schema": "./bin/validate"
+    },
+    "files": [
+        "/lib",
+        "/schemas",
+        "/docs/SCHEMA.md"
+    ],
+    "engines": {
+        "node": ">= 10.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/bbc/object-based-media-schema.git"
+    },
+    "author": "BBC Research & Development",
+    "license": "GPL-3.0-only",
+    "bugs": {
+        "url": "https://github.com/bbc/object-based-media-schema/issues"
+    },
+    "homepage": "https://github.com/bbc/object-based-media-schema#readme",
+    "dependencies": {
+        "jsonschema": "^1.4.0"
+    },
+    "devDependencies": {
+        "@json-editor/json-editor": "^2.0.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^3.1.0",
+        "json-schema-merge-allof": "^0.6.0",
+        "json-schema-ref-parser": "^5.0.0",
+        "mkdirp": "^0.5.1",
+        "node-dir": "^0.1.17",
+        "nodemon": "^2.0.2",
+        "serve-index": "^1.9.1"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Production Package in full",
+    "allOf": [
+        { "$ref": "/core.json#/definitions/full_base" },
+        {
+            "type": "object",
+            "properties": {
+                "id": {},
+                "object_class": {
+                    "type": "string",
+                    "enum": [
+                        "PRODUCTION_PACKAGE"
+                    ]
+                },
+                "name": {},
+                "description": {},
+                "version": {},
+                "tags": {},
+                "meta": {},
+                "uri": { "$ref": "/production_package/types.json#/definitions/uri" },
+                "annotations": { "$ref": "/production_package/types.json#/definitions/annotations" },
+                "schema_version": {}
+            },
+            "required": ["uri", "annotations"],
+            "additionalProperties": false
+        }
+    ]
+}

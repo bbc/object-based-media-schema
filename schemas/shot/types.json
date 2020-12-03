@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Shots",
+    "description": "Types for shots.",
+    "definitions": {
+        "location": {
+            "type": "string",
+            "description": "Free-text of shooting location of shot."
+        },
+        "shot_number": {
+            "type": "number",
+            "description": "Shot number"
+        },
+        "complete": {
+            "type": "boolean",
+            "description": "Has all the content for the shot been captured?"
+        },
+        "rush_ids": {
+            "type": "array",
+            "items": {
+                "$ref": "/uuids.json#/definitions/rush_uuid"
+            }
+        }
+    }
+}

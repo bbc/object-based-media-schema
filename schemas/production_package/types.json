@@ -1,0 +1,243 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Production Package Element",
+    "description": "The Production Package element is a wrapper around an IPS Package with added metadata and annotations",
+    "definitions": {
+        "annotation": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "/core.json#/definitions/uuid" },
+                        "type": {
+                            "type": "string",
+                            "enum": ["TEXT_LABEL"]
+                        },
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "start": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing start position of annotation"
+                                },
+                                "end": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing end position of annotation"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Free-text label describing annotation"
+                                }
+                            },
+                            "required": [
+                                "start",
+                                "end",
+                                "label"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "type",
+                        "body"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "/core.json#/definitions/uuid" },
+                        "type": {
+                            "type": "string",
+                            "enum": ["QUALITY"]
+                        },
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "good": {
+                                    "type": "boolean",
+                                    "description": "Was the rush a good one?"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Free-text label describing what was good or bad"
+                                }
+                            },
+                            "required": [
+                                "good",
+                                "label"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "type",
+                        "body"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "/core.json#/definitions/uuid" },
+                        "type": {
+                            "type": "string",
+                            "enum": ["PRODUCTION_PACKAGE"]
+                        },
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "start": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing start position of annotation"
+                                },
+                                "end": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing end position of annotation"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Free-text label describing annotation"
+                                },
+                                "production_package": {
+                                    "$ref": "/uuids.json#/definitions/production_package_uuid",
+                                    "description": "Link to another production_package which this annotation references. Could be audio note, screenshot, a script, etc etc"
+                                },
+                                "production_package_version": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Specific version of production_package in ptp TAI timestamp format"
+                                }
+                            },
+                            "required": [
+                                "start",
+                                "end",
+                                "label",
+                                "production_package",
+                                "production_package_version"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "type",
+                        "body"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "/core.json#/definitions/uuid" },
+                        "type": {
+                            "type": "string",
+                            "enum": ["PRODUCTION_SCRIPT"]
+                        },
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "start": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing start position of annotation"
+                                },
+                                "end": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing end position of annotation"
+                                },
+                                "label": {
+                                    "type": "string",
+                                    "description": "Free-text label describing annotation"
+                                },
+                                "production_package": {
+                                    "$ref": "/uuids.json#/definitions/production_package_uuid",
+                                    "description": "Link to another production_package which this annotation references. Could be audio note, screenshot, a script, etc etc"
+                                },
+                                "production_package_version": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Specific version of production_package in ptp TAI timestamp format"
+                                },
+                                "in_char": {
+                                    "type": "number",
+                                    "description": "This field allows specification of start position of annotation based on a character at position x in production_package"
+                                },
+                                "out_char": {
+                                    "type": "number",
+                                    "description": "This field allows specification of end position of annotation based on a character at position x in production_package"
+                                }
+                            },
+                            "required": [
+                                "start",
+                                "end",
+                                "label",
+                                "production_package",
+                                "production_package_version",
+                                "in_char",
+                                "out_char"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "type",
+                        "body"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": { "$ref": "/core.json#/definitions/uuid" },
+                        "type": {
+                            "type": "string",
+                            "enum": ["LOCATION"]
+                        },
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "start": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing start position of location"
+                                },
+                                "end": {
+                                    "$ref": "/core.json#/definitions/ptp_timestamp",
+                                    "description": "Timestamp within ips package time range representing end position of location"
+                                },
+                                "gps": {
+                                    "$ref": "/core.json#/definitions/gps",
+                                    "description": "GPS coordinates in Latitude,Longitude format"
+                                }
+                            },
+                            "required": [
+                                "gps"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "type",
+                        "body"
+                    ],
+                    "additionalProperties": false
+                }
+
+            ]
+
+        },
+        "annotations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/annotation"
+            },
+            "description": "List of annotations for Production Package",
+            "minItems": 0
+        },
+        "uri": {
+            "type": "string",
+            "description": "Unique identifier for a piece of content (likely a IP Studio Package)"
+        }
+    }
+}

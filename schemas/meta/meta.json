@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "Dictionary of namespaced extra metadata for different tools and players. The data in this field should not be required to playout the experience but the data may enhance the look and feel of the playout of the experience. Each namespaced object should only contain data required for that specific tool and data that is specific to that tool should only be inside this namespaced meta field. For example data about how to lay a story out in a graph based tool called 'StoryGraph' should be contained in the 'storygraph' namespace and nowhere else in the datamodel.",
+    "properties": {
+        "storyplayer": {
+            "$ref": "/meta/storyplayer_meta.json#"
+        },
+        "romper": {
+            "$ref": "/meta/romper_meta.json#"
+        },
+        "storygraph": {
+            "$ref": "/meta/storygraph_meta.json#"
+        },
+        "storyshooter": {
+            "$ref": "/meta/storyshooter_meta.json#"
+        }
+    },
+    "additionalProperties": false
+}

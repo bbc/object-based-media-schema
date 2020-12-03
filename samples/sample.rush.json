@@ -1,0 +1,11 @@
+{
+    "id": "81f262ac-3533-484e-a037-d416562f48ed",
+    "object_class": "RUSH",
+    "version": "0:0",
+    "tags": {},
+    "name": "Rush 1",
+    "take_number": 1,
+    "production_package_id": "a45c17fb-2d9c-4d5d-9e62-a6285b9da9dc",
+    "in_progress": false,
+    "schema_version":"0.2.0"
+}

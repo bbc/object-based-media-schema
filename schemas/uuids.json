@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "asset_collection_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to an asset collection"
+        },
+        "narrative_element_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a narrative element"
+        },
+        "representation_collection_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a representation collection element"
+        },
+        "production_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a production"
+        },
+        "production_package_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a production package"
+        },
+        "representation_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a representation"
+        },
+        "representation_behaviour_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a representation behaviour."
+        },
+        "representation_behaviour_asset_collection_mapping_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a behaviour_asset_collection_mapping."
+        },
+        "representation_collection_representation_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a representation collection representation, effectively the join between representations and representation collections"
+        },
+        "representation_choice_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID of a particular entry in the choice object to enable individual addressing of each choice for the purpose of deletion"
+        },
+        "rush_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a rush"
+        },
+        "scene_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a scene"
+        },
+        "shooting_schedule_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a shotting schedule"
+        },
+        "shot_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a shot"
+        },
+        "story_beginning_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID of a story beginning"
+        },
+        "story_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a story"
+        },
+        "narrative_element_link_uuid": {
+            "$ref": "/core.json#/definitions/uuid",
+            "description": "A UUID pointing to a narrative_element_link"
+        }
+    }
+}

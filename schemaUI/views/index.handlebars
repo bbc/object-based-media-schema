@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Object Based Media Schema</title>
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
+  <body>
+  <ul class="nav nav-tabs">
+      <li class="nav-item">
+          <a class="nav-link {{active schemaName "experience" schemaType "without_production"}}" href="/schema/experience">experience</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "story" schemaType "full"}}" href="/schema/story/full">story (full)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "story" schemaType "update"}}" href="/schema/story/update">story (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "story_beginning" schemaType "update"}}" href="/schema/story_beginning/update">story_beginning (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "narrative_element" schemaType "full"}}" href="/schema/narrative_element/full">narrative_element (full)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "narrative_element" schemaType "update"}}" href="/schema/narrative_element/update">narrative_element (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "narrative_element_link" schemaType "update"}}" href="/schema/narrative_element_link/update">narrative_element_link (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation_collection" schemaType "full"}}" href="/schema/representation_collection/full">representation_collection (full)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation_collection" schemaType "update"}}" href="/schema/representation_collection/update">representation_collection (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation_collection_representation" schemaType "update"}}" href="/schema/representation_collection_representation/update">representation_collection_representation (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation" schemaType "full"}}" href="/schema/representation/full">representation (full)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation" schemaType "update"}}" href="/schema/representation/update">representation (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "representation_choice" schemaType "update"}}" href="/schema/representation_choice/update">representation_choice (update)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "asset_collection" schemaType "full"}}" href="/schema/asset_collection/full">asset_collection (full)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{active schemaName "asset_collection" schemaType "update"}}" href="/schema/asset_collection/update">asset_collection (update)</a>
+    </li>
+</ul>
+
+
+    <h1>Schema {{schemaName}}_{{schemaType}}.json</h1>
+
+    {{#if schemaExample}}
+        <button class="btn btn-primary" id='example'>Populate with example</button>
+    {{/if}}
+    <button class="btn btn-primary" id='view_json'>Print JSON to Console</button>
+    <button class="btn btn-primary" id='save_json'>Save JSON to File</button>
+    <div id='editor_holder'></div>
+
+    <script>
+      // Initialize the editor with a JSON schema
+      var editor = new JSONEditor(document.getElementById('editor_holder'),{
+        ajax: true,
+        theme: 'bootstrap4',
+        iconlib: 'fontawesome5',
+        schema: {{{schema}}},
+        object_layout: "table"
+      });
+
+      {{#if schemaExample}}
+          document.getElementById('example').addEventListener('click',function() {
+            editor.setValue({{{schemaExample}}});
+          });
+      {{/if}}
+
+      // Hook up the submit button to log to the console
+      document.getElementById('view_json').addEventListener('click',function() {
+        // Get the value from the editor
+        console.log(editor.getValue());
+      });
+
+      document.getElementById('save_json').addEventListener('click', function(e) {
+        e.preventDefault();
+        var example = editor.getValue(),
+        filename = '{{schemaName}}.json',
+        blob = new Blob([JSON.stringify(example, null, 2)], {
+          type: "application/json;charset=utf-8"
+        });
+
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+          var a = document.createElement('a');
+          a.download = filename;
+          a.href = URL.createObjectURL(blob);
+          a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
+
+          a.dispatchEvent(new MouseEvent('click', {
+            'view': window,
+            'bubbles': true,
+            'cancelable': false
+          }));
+        }
+      }, false);
+    </script>
+  </body>
+</html>

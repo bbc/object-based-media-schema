@@ -1,0 +1,38 @@
+{
+    "id": "15516b1c-7ce9-4a61-9270-a90137d742f2",
+    "object_class": "NARRATIVE_ELEMENT",
+    "version": "0:0",
+    "name": "Slicing The Bread",
+    "description": "Several slices of bread are cut from a crusty granary loaf with a bread knife",
+    "meta": {},
+    "tags": {},
+    "body": {
+        "type": "REPRESENTATION_COLLECTION_ELEMENT",
+        "representation_collection_target_id": "2397b88a-2315-4fe3-af0d-2b011766dbec"
+    },
+
+    "links": [
+        {
+            "id": "56037255-1632-4B4C-8D88-7394DF9D7977",
+            "target_narrative_element_id": "d92bdf80-9577-43de-a5f7-6618f85e7caf",
+            "condition": { "==": [{"var" : "recipe_name"}, "porridge"]},
+            "link_type": "NARRATIVE_ELEMENT"
+        },
+        {
+            "id": "A52EF808-22BE-4DA0-94EF-0CA35134FD76",
+            "target_narrative_element_id": "1c356eda-fb1d-47c6-aa0b-b2adfc13197a",
+            "condition": { "==": [{"var" : "recipe_name"}, "egg on toast"]},
+            "link_type": "NARRATIVE_ELEMENT"
+        },
+        {   "id": "B0F4BE0D-B2C2-4C0B-9664-616F9271C0B5",
+            "condition": {"==" : [1, 0]},
+            "link_type": "CHOOSE_BEGINNING"
+        },
+        {
+            "id": "DB90C350-FDD6-47ED-9704-653649996F84",
+            "condition": {"==" : [1, 0]},
+            "link_type": "END_STORY"
+        }
+    ],
+    "schema_version":"0.2.0"
+}

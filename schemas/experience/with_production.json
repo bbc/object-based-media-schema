@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "The fully flattened OBM story including stories, narrative_elements, representation_collections, representations asset_collections, productions, production_packages, rushes, shooting_schedules, shots",
+    "type": "object",
+    "properties": {
+        "stories": {
+            "type": "array",
+            "items": {"$ref": "/story/full.json#" }
+        },
+        "narrative_elements": {
+            "type": "array",
+            "items": {"$ref": "/narrative_element/full.json#"}
+        },
+        "representation_collections": {
+            "type": "array",
+            "items": {"$ref": "/representation_collection/full.json#"}
+        },
+        "representations": {
+            "type": "array",
+            "items": {"$ref": "/representation/full.json#"}
+        },
+        "asset_collections": {
+            "type": "array",
+            "items": {"$ref": "/asset_collection/full.json#"}
+        },
+
+        "productions": {
+            "type": "array",
+            "items": {"$ref": "/production/full.json#"}
+        },
+        "production_packages": {
+            "type": "array",
+            "items": {"$ref": "/production_package/full.json#"}
+        },
+        "rushes": {
+            "type": "array",
+            "items": {"$ref": "/rush/full.json#"}
+        },
+        "shooting_schedules": {
+            "type": "array",
+            "items": {"$ref": "/shooting_schedule/full.json#"}
+        },
+        "shots": {
+            "type": "array",
+            "items": {"$ref": "/shot/full.json#"}
+        },
+        "schema_version": {}
+    },
+    "additionalProperties": false,
+    "required": ["stories", "narrative_elements", "representation_collections", "representations", "asset_collections", "productions", "production_packages", "rushes", "shooting_schedules", "shots"]
+}

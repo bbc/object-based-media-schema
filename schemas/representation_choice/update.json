@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Representation choice for adding representations to switchables etc as used for creates and updates with the API",
+    "type": "object",
+    "properties": {
+        "choice_representation_id": { "$ref": "/uuids.json#/definitions/representation_uuid" },
+        "label": {
+            "type":"string"
+        }
+    },
+    "required": [
+        "choice_representation_id"
+    ],
+    "additionalProperties": false
+}

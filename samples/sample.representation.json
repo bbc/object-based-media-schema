@@ -1,0 +1,96 @@
+{
+    "id": "82e05489-c2f7-4770-a05c-f2c68b288647",
+    "object_class": "REPRESENTATION",
+    "version": "0:0",
+    "name": "Toast Going Into Toaster",
+    "tags": {},
+    "meta": {},
+    "representation_type": "urn:x-object-based-media:representation-types:simple-av/v1.0",
+    "asset_collections": {
+        "foreground_id": "2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c",
+        "background_ids": ["2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c"],
+        "icon": {
+            "default_id":"1dbcb2c6-adf4-4e68-b7fe-fe3ce458bb79"
+        },
+        "behaviours": [
+            {
+                "behaviour_asset_collection_mapping_id": "adeb8f74-00d1-45ce-bf92-8328bc66457a",
+                "asset_collection_id": "ce803466-c9f2-4523-b2ec-c9c769a07a52"
+            },
+            {
+                "behaviour_asset_collection_mapping_id": "32184381-85ce-4d71-8a42-895cf5d485c9",
+                "asset_collection_id": "283568d1-7dce-48f1-8c18-396553a9afbd"
+            }
+        ]
+    },
+    "behaviours": {
+        "started": [
+            {
+                "id": "cf20e378-c0c6-45ef-8a94-149313d72cc5",
+                "type": "urn:x-object-based-media:representation-behaviour:pause/v1.0",
+                "pauseTime": 1.0
+            },
+            {
+                "id": "eaa8bc13-73e3-4627-afb3-09c0b7b3bd16",
+                "type": "urn:x-object-based-media:representation-behaviour:blur/v1.0",
+                "blur": 1.0
+            }
+        ],
+        "during": [
+            {
+                "behaviour": {
+                    "id": "c54e2bda-b1c5-458b-9b91-a119137ceba4",
+                    "type": "urn:x-object-based-media:representation-behaviour:showlinkchoices/v1.0",
+                    "show_ne_to_end": true,
+                    "one_shot": false,
+                    "disable_controls": true,
+                    "show_time_remaining": true,
+                    "overlay_class": "icon-bar",
+                    "force_choice": false,
+                    "show_if_one_choice": false,
+                    "link_icons": [
+                        {
+                            "target_narrative_element_id": "97106527-4204-42B2-91F7-FD0EED9D2032",
+                            "image": "32184381-85ce-4d71-8a42-895cf5d485c9",
+                            "position": {
+                                "two_d": {
+                                    "left": 10,
+                                    "top": 10,
+                                    "width": 20,
+                                    "height": 20
+                                }
+                            }
+                        },
+                        {
+                            "target_narrative_element_id": "A347A22E-D752-4C0A-AB47-A6B87D46A250",
+                            "text": "Choose Me!"
+                        }
+                    ]
+                },
+                "start_time": 12.0
+            }
+        ],
+        "completed": [
+            {
+                "id": "d7a6476c-3c0c-4423-b9d7-b0b46738e6a4",
+                "type": "urn:x-object-based-media:representation-behaviour:showimage/v1.0",
+                "image": "adeb8f74-00d1-45ce-bf92-8328bc66457a"
+            },
+            {
+                "id": "32184381-85ce-4d71-8a42-895cf5d485c9",
+                "type": "urn:x-object-based-media:representation-behaviour:manipulatevariable/v1.0",
+                "target_variable": "counter",
+                "operation": { "+": [{"var": "counter"}, 1]}
+            },
+            {
+                "id": "eaffc90e-1964-46c2-9dc2-0cfe5121080c",
+                "type": "urn:x-object-based-media:representation-behaviour:showvariablepanel/v1.0",
+                "panel_label": "What do you want to see?",
+                "variables":[{"variable_name": "test1", "label": "test1label"},
+                            {"variable_name": "test2", "label": "test2label"},
+                            {"variable_name": "test3", "label": "test3label"}]
+            }
+        ]
+    },
+    "schema_version":"0.2.0"
+}
