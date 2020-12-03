@@ -8,20 +8,20 @@ To learn about the schema, see [docs/SCHEMA.md](docs/SCHEMA.md).
 ## Validating your json against the schema
 To validate an experience against the schema:
 ```
-npx @bbc/object-based-media-schema <schema> <file> [<file> ...]
+npx object-based-media-schema <schema> <file> [<file> ...]
 ```
 
 ## Installing the library
 To install the library
 ```
-npm install --save @bbc/object-based-media-schema
+npm install --save object-based-media-schema
 ```
 
 ### Using the library
 To validate an object based media experience JSON against the schema from your own code:
 
 ```
-const { validator } = require('@bbc/object-based-media-schema');
+const { validator } = require('object-based-media-schema');
 const schema = 'experience/without_production';
 
 validator(schema, storyJson)
