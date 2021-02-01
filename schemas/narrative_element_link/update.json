@@ -47,10 +47,38 @@
                 "link_type": {
                     "type": "string",
                     "enum": [
-                        "CHOOSE_BEGINNING",
+                        "CHOOSE_BEGINNING"
+                    ],
+                    "description": "Return to parent story and choose a new beginning."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "[optional] free-text description of this link"
+                }
+            },
+            "required": [
+                "condition",
+                "link_type"
+            ],
+            "additionalProperties": false
+        },
+        {
+            "type": "object",
+            "properties": {
+                "link_position": {
+                    "type": "number",
+                    "description": "Position to insert link into array of links. If property not provided then link is inserted at the end of the array"
+                },
+                "condition": {
+                    "$ref": "/expression.json#",
+                    "description": "A boolean expression written in JsonLogic, which includes the JSONLogic data components"
+                },
+                "link_type": {
+                    "type": "string",
+                    "enum": [
                         "END_STORY"
                     ],
-                    "description": "CHOOSE_BEGINNING: return to parent story and choose a new beginning. END_STORY: This will either end the experience, or pass control back to the narrative element holding this story"
+                    "description": "This will either end the experience, or pass control back to the narrative element holding this story"
                 },
                 "description": {
                     "type": "string",
