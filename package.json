@@ -1,6 +1,6 @@
 {
     "name": "object-based-media-schema",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "JSON schemas which describe a common language for object-based media",
     "main": "lib/validate.js",
     "keywords": ["BBC", "BBC Research & Development", "schema", "interactive", "media", "object", "personalised"],
@@ -8,6 +8,9 @@
         "test": "./bin/validate_samples.sh",
         "schemaUI": "nodemon -L --watch schemas/ --exec node schemaUI/server.js"
     },
+    "publishConfig": {
+        "access": "public"
+    },    
     "bin": {
         "object-based-media-schema": "./bin/validate"
     },
