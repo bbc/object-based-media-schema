@@ -8,6 +8,9 @@
         "test": "./bin/validate_samples.sh",
         "schemaUI": "nodemon -L --watch schemas/ --exec node schemaUI/server.js"
     },
+    "publishConfig": {
+        "access": "public"
+    },    
     "bin": {
         "object-based-media-schema": "./bin/validate"
     },
