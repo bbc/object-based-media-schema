@@ -534,6 +534,59 @@
                    "additionalProperties": false
                 },
                 {
+                    "title": "Link Map Overlay Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:mapoverlay/v1.0"
+                            ]
+                        },
+                        "links": {
+                            "type": "array",
+                            "description": "List of links with rectangles defining click areas",
+                            "items": {
+                                "title": "Link area",
+                                "type": "object",
+                                "properties": {
+                                    "narrative_element_id": {
+                                        "type": "string",
+                                        "description": "UUID of Narrative Element the link points at"
+                                    },
+                                    "position": {
+                                        "type": "object",
+                                        "description": "Position and size of link area on screen, using percentages",
+                                        "properties": {
+                                            "top": {
+                                                "description": "Distance of top edge of link area from top of player (%)",
+                                                "type": "number"
+                                            },
+                                            "left": {
+                                                "description": "Distance of left edge of link area from left of player (%)",
+                                                "type": "number"
+                                            },
+                                            "width": {
+                                                "description": "Width of link area, in %",
+                                                "type": "number"
+                                            },
+                                            "height": {
+                                                "description": "Height of link area (%)",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": ["top", "left", "width", "height"]
+                                }
+                            }
+                        },
+                             "additionalProperties": false
+                        }
+                    },
+                   "required": ["type", "links"],
+                   "additionalProperties": false
+                },
+                {
                     "title": "Manipulate Variables Behaviour",
                     "properties": {
                         "id": {
