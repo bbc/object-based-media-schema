@@ -715,6 +715,63 @@
                     "additionalProperties": false
                 },
                 {
+                    "title": "Behaviour Toggle Icon Behaviour",
+                    "description": "Behaviour that renders an icon, clicking this toggles other behaviours on/off",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:iconbehaviour/v1.0"
+                            ]
+                        },
+                        "icon": {
+                            "type":"object",
+                            "properties": {
+                                "image": {
+                                    "type": "string",
+                                    "description": "Behaviour Id for mapping to Asset Collection."
+                                },
+                                "position": {
+                                    "type": "object",
+                                    "description": "Position and size of link area on screen, using percentages",
+                                    "properties": {
+                                        "top": {
+                                            "description": "Distance of top edge of link area from top of player (%)",
+                                            "type": "number"
+                                        },
+                                        "left": {
+                                            "description": "Distance of left edge of link area from left of player (%)",
+                                            "type": "number"
+                                        },
+                                        "width": {
+                                            "description": "Width of link area, in %",
+                                            "type": "number"
+                                        },
+                                        "height": {
+                                            "description": "Height of link area (%)",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": ["top", "left", "width", "height"]
+                                }
+                            },
+                            "description": "Image and position of icon",
+                            "required": ["image", "position"]
+                        },
+                        "behaviours": {
+                            "type": "array",
+                            "items": {
+                                "title": "Behaviour to toggle",
+                                "$ref": "#/definitions/behaviour_types"
+                            }
+                        }
+                    },
+                    "required": ["icon", "behaviours"],
+                    "additionalProperties": false
+                },
+                {
                     "title": "Show Variable Panel",
                     "properties": {
                         "id": {},
