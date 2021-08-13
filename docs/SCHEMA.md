@@ -279,6 +279,7 @@ The `type` attribute is given as the URN below prefixed with: `urn:x-object-base
 | Text overlay | `textoverlay/v1.0` | Display some text over the content | See below for details ||
 | Link choices | `showlinkchoices/v1.0` | Display text or icons to allow the user to choose between valid links. | See below for details | Only those links from this representation whose conditions evaluate to `true` will be presented. |
 | Show variable panel | `showvariablepanel/v1.0` | Display an interface to allow users to set the values of one or more story variables | See below for details ||
+| Link Map Overlay | `mapoverlay/v1.0` | Places an invisible set of clickable rectangles on the screen (e.g., over an image or video) that can be used to navigate to Narrative Elements. | See below for details | This behaviour overrides the concepts of links, so link conditions are not evaluated. |
 
 The attributes omitted from the table above are as follows:
 
@@ -334,6 +335,11 @@ The attributes omitted from the table above are as follows:
     - `max_label` (String) - text to be rendered at the upper end of a scale for variables of type `number`
     - `precise_entry` (boolean) - Determines whether or not the user can enter an exact value for a variable of type `number` (e.g., HTML number input rather than a slider)
 
+#### `mapoverlay`
+* `links` (Array of Objects, required) - Defines a set of rectangles on the screen; each has the UUID of the element that it links to and the position and size of the rectangle:
+    - `narrative_element_id` string defining the Narrative Element that clicking on the rectangle will navigate to
+    - `position` (Object) with `left`, `top`, `width`, `height` as number attributes specifying location within the player using percent
+  
 ### Example
 [Representation example](../samples/sample.representation.json)
 
