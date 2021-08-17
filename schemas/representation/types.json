@@ -412,6 +412,52 @@
                      "additionalProperties": false
                 },
                 {
+                    "title": "Fade audio in Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:fadeaudioin/v1.0"
+                            ]
+
+                        },
+                        "startVolume": {
+                            "description": "Value between 1 and 0 to set the volume at for start of fade (default 0)",
+                            "type":"number"
+                        },
+                        "duration": {
+                            "description": "time to fade from startVolume to previously user set volume",
+                            "type": "number"
+                        }
+                    },
+                     "required": ["duration"],
+                     "additionalProperties": false
+                },
+                {
+                    "title": "Fade audio out Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:fadeaudioout/v1.0"
+                            ]
+
+                        },
+                        "targetVolume": {
+                            "description": "Value between 0 and 1 to fade the volume to (default 0)",
+                            "type":"number"
+                        },
+                        "duration": {
+                            "description": "time to fade from current volume to targetVolume",
+                            "type": "number"
+                        }
+                    },
+                     "required": ["duration"],
+                     "additionalProperties": false
+                },
+                {
                     "title": "Opaque Colour Overlay Behaviour",
                     "properties": {
                         "id": {},
