@@ -366,6 +366,52 @@
                     "additionalProperties": false
                 },
                 {
+                    "title": "Fade in Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:fadein/v1.0"
+                            ]
+
+                        },
+                        "colour": {
+                            "description": "In form rgba(R, G, B, A)",
+                            "type":"string"
+                        },
+                        "duration": {
+                            "description": "time to fade from colour to fully opaque (seconds)",
+                            "type": "number"
+                        }
+                    },
+                     "required": ["colour", "duration"],
+                     "additionalProperties": false
+                },
+                {
+                    "title": "Fade out Behaviour",
+                    "properties": {
+                        "id": {},
+                        "type":{
+                            "type":"string",
+                            "enum": [
+                                "urn:x-object-based-media:representation-behaviour:fadeout/v1.0"
+                            ]
+
+                        },
+                        "colour": {
+                            "description": "In form rgba(R, G, B, A)",
+                            "type":"string"
+                        },
+                        "duration": {
+                            "description": "time to fade from invisible to colour (seconds)",
+                            "type": "number"
+                        }
+                    },
+                     "required": ["colour", "duration"],
+                     "additionalProperties": false
+                },
+                {
                     "title": "Opaque Colour Overlay Behaviour",
                     "properties": {
                         "id": {},
