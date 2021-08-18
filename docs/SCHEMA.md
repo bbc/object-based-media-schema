@@ -280,6 +280,7 @@ The `type` attribute is given as the URN below prefixed with: `urn:x-object-base
 | Link choices | `showlinkchoices/v1.0` | Display text or icons to allow the user to choose between valid links. | See below for details | Only those links from this representation whose conditions evaluate to `true` will be presented. |
 | Show variable panel | `showvariablepanel/v1.0` | Display an interface to allow users to set the values of one or more story variables | See below for details ||
 | Link Map Overlay | `mapoverlay/v1.0` | Places an invisible set of clickable rectangles on the screen (e.g., over an image or video) that can be used to navigate to Narrative Elements. | See below for details | This behaviour overrides the concepts of links, so link conditions are not evaluated. |
+| Behaviour Toggle Icon | `iconbehaviour/v1.0` | This places an icon on screen; clicking the icon toggles a set of other behaviours (clicks alternately start all behaviours and clear all behaviours) | See below for details ||
 
 The attributes omitted from the table above are as follows:
 
@@ -339,6 +340,12 @@ The attributes omitted from the table above are as follows:
 * `links` (Array of Objects, required) - Defines a set of rectangles on the screen; each has the UUID of the element that it links to and the position and size of the rectangle:
     - `narrative_element_id` string defining the Narrative Element that clicking on the rectangle will navigate to
     - `position` (Object) with `left`, `top`, `width`, `height` as number attributes specifying location within the player using percent
+
+#### `iconbehaviour`
+* `icon` (Object, required) specifying the icon image and its position on screen
+  - `image` string, `behaviour_asset_collection_mapping_id` UUID of an asset collection in the `asset_collections` attribute)
+  - `position` (Object) with `left`, `top`, `width`, `height` as number attributes specifying location of the icon within the player using percent
+* `behaviours` (Array of Objects, required) - a set of behaviours that will be run and cleared when the icon is clicked.  For example, `showimage` and `mapoverlay` behaviours could be combined to create a clickable navigation map that appears/disappears when the user clicks the icon.
   
 ### Example
 [Representation example](../samples/sample.representation.json)
