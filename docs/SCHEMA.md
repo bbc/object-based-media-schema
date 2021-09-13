@@ -280,6 +280,11 @@ The `type` attribute is given as the URN below prefixed with: `urn:x-object-base
 | Link choices | `showlinkchoices/v1.0` | Display text or icons to allow the user to choose between valid links. | See below for details | Only those links from this representation whose conditions evaluate to `true` will be presented. |
 | Show variable panel | `showvariablepanel/v1.0` | Display an interface to allow users to set the values of one or more story variables | See below for details ||
 | Link Map Overlay | `mapoverlay/v1.0` | Places an invisible set of clickable rectangles on the screen (e.g., over an image or video) that can be used to navigate to Narrative Elements. | See below for details | This behaviour overrides the concepts of links, so link conditions are not evaluated. |
+| Fade in | `fadein/v1.0` | Apply a colour overlay, fading in over a given duration | `colour` (string, css colour) and `duration` (number, time in s) | Typically applied as a during behaviour with `start_time` 0 |
+| Fade out | `fadeout/v1.0` | Apply a colour overlay, then fade it out over a given duration | `colour` (string, css colour) and `duration` (number, time in s) | Typically applied as a during behaviour with `start_time` of the media duration minus the `duration` |
+| Fade audio in | `fadeaudioin/v1.0` | Set the foreground audio volume to an initial value, then fade up to last user set value over a given duration |  `duration` (number, time in s) and optional `initialVolume` (default is 0) | |
+| Fade audio out | `fadeaudioout/v1.0`| Fade the foreground audio down to the given value over a given duration |  `duration` (number, time in s) and optional `targetVolume` (default is 0) | |
+
 
 The attributes omitted from the table above are as follows:
 
