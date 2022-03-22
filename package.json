@@ -1,6 +1,6 @@
 {
     "name": "@bbc/object-based-media-schema",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "JSON schemas which describe a common language for object-based media",
     "main": "lib/validate.js",
     "keywords": [
