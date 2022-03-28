@@ -205,7 +205,7 @@ A representation type is used by the player to determine what media playback mod
 The `asset_collections` field contains an Object whose attributes will depend on the type of representation denoted in the `representation_type` field.
 
 * ```foreground_id```       (String: UUID, required) - id of an ```asset_collection``` that is the primary content (depending on the type, e.g., an ```IMAGE``` asset_collection for an ```image``` representation)
-* ```background_ids```      (Array of UUID Strings) - ids of ```asset_collection```s of background media, e.g., ```SIMPLE_AUDIO``` assets that accompany the primary presentation.
+* ```background_audio_ids```      (Array of UUID Strings) - ids of ```asset_collection```s of background audio assets (e.g., ```SIMPLE_AUDIO```) that accompany the primary presentation.
 * ```background_image```      (String: UUID) - optional pointer to an ```asset_collection``` for `simple_audio` representations; if present this image will be displayed by the player application while the audio is playing
 * ```icon```                (Object) - pointers to ```asset_collection```s, used in chapter navigation menus that might be surfaced by the player application.  This Object contains two attributes:
     - `default_id`  (String: UUID, required) - an icon to be displayed to represent this representation in chapter navigation.

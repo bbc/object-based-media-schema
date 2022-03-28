@@ -8,7 +8,7 @@
     "representation_type": "urn:x-object-based-media:representation-types:simple-av/v1.0",
     "asset_collections": {
         "foreground_id": "2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c",
-        "background_ids": ["2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c"],
+        "background_audio_ids": ["2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c"],
         "icon": {
             "default_id":"1dbcb2c6-adf4-4e68-b7fe-fe3ce458bb79"
         },
