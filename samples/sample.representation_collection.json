@@ -19,6 +19,5 @@
             "representation_id": "974fae33-e688-4c07-a111-2cb0f9e54a9c",
             "condition": {"==": [false, true]}
         }
-    ],
-    "schema_version":"0.2.0"
+    ]
 }

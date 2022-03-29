@@ -32,8 +32,7 @@
                         "$ref": "/uuids.json#/definitions/scene_uuid"
                     } },
                 "previous_shot": { "$ref": "/production/types.json#/definitions/shot_link" },
-                "next_shot": { "$ref": "/production/types.json#/definitions/shot_link" },
-                "schema_version": {}
+                "next_shot": { "$ref": "/production/types.json#/definitions/shot_link" }
             },
             "required": ["production_package_bin", "scenes", "shooting_schedules"],
             "additionalProperties": false

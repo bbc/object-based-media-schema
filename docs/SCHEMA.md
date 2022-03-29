@@ -61,7 +61,7 @@ This is what a multi-platform, linear story might look like. Each narrative elem
 
 # OBM Data Model in Detail
 
-The details of the objects in the schema are below.  Each object has a required ```object_class``` attribute; this is given below.  In addition Objects are identified using a required `id` field using a UUID string, and the version of this schema that the Object was created against is recorded in the ```schema_version``` attribute.  Many objects may have ```meta``` and  ```tags``` attributes: see [Meta](#`Meta`-Field) and [Tags](#`Tags`-Field), below.  If a non-required attribute is present, it must take the correct form, although often an empty String (```""```), Array (```[]```) or Object (```{}```) is valid.
+The details of the objects in the schema are below.  Each object has a required ```object_class``` attribute; this is given below.  In addition Objects are identified using a required `id` field using a UUID string.  Many objects may have ```meta``` and  ```tags``` attributes: see [Meta](#`Meta`-Field) and [Tags](#`Tags`-Field), below.  If a non-required attribute is present, it must take the correct form, although often an empty String (```""```), Array (```[]```) or Object (```{}```) is valid.
 
 ## Story
 
@@ -80,7 +80,8 @@ The Story contains a list of possible ```beginnings```, which store ```narrative
 * ```beginnings```			(Array of Objects, required), see below for details
 * ```narrative_element_ids``` 	(Array of UUID strings, required) - IDs of narrative elements contained within this story
 * ```meta``` 				(Object: See [Meta](#`Meta`-Field))
-
+,
+* ```schema_version```      (String): The version of this schema that the story was created against
 
 #### variables
 The ```variables``` attribute defines the variables that can be used in the logic of the story.  They are stored as Objects in a dictionary.  This may be an empty Object.  The key for each ```variable``` is its name and the Object contains the following attributes:

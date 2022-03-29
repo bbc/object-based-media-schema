@@ -62,12 +62,9 @@
                 },
                 "meta": {
                     "$ref": "/meta/meta.json#"
-                },
-                "schema_version": {
-                    "$ref": "#/definitions/schema_version"
                 }
             },
-            "required": ["id", "version", "name", "tags", "object_class", "schema_version"]
+            "required": ["id", "version", "name", "tags", "object_class"]
         },
         "update_base": {
             "type": "object",

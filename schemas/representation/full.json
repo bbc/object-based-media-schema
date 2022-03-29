@@ -24,7 +24,6 @@
                 "asset_collections": {},
                 "behaviours":{ "$ref": "/representation/types.json#/definitions/behaviours" },
                 "choices": {},
-                "schema_version": {},
                 "duration": {
                     "type": ["number", "null"]
                 }

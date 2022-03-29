@@ -91,6 +91,5 @@
                             {"variable_name": "test3", "label": "test3label"}]
             }
         ]
-    },
-    "schema_version":"0.2.0"
+    }
 }

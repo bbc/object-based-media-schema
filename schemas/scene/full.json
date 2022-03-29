@@ -26,8 +26,7 @@
                 "representation_id": {},
                 "narrative_element_id": {},
                 "single_essence_umcp_compositions": {},
-                "shot_ids": {},
-                "schema_version": {}
+                "shot_ids": {}
             },
             "additionalProperties": false,
             "required": [

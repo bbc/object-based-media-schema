@@ -20,8 +20,7 @@
                 "meta": {},
                 "take_number": {"$ref": "/rush/types.json#/definitions/take_number" },
                 "production_package_id": {"$ref": "/rush/types.json#/definitions/production_package_id" },
-                "in_progress": {"$ref": "/rush/types.json#/definitions/in_progress" },
-                "schema_version": {}
+                "in_progress": {"$ref": "/rush/types.json#/definitions/in_progress" }
             },
             "required": [
                 "in_progress",

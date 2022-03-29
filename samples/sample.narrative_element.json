@@ -33,6 +33,5 @@
             "condition": {"==" : [1, 0]},
             "link_type": "END_STORY"
         }
-    ],
-    "schema_version":"0.2.0"
+    ]
 }

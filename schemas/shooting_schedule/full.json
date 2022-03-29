@@ -19,8 +19,7 @@
                 "tags": {},
                 "meta": {},
                 "schedule_items": { "$ref": "/shooting_schedule/types.json#/definitions/schedule_items" },
-                "date": { "$ref": "/shooting_schedule/types.json#/definitions/date" },
-                "schema_version": {}
+                "date": { "$ref": "/shooting_schedule/types.json#/definitions/date" }
             },
             "required": ["schedule_items", "date"],
             "additionalProperties": false

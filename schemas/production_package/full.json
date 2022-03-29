@@ -19,8 +19,7 @@
                 "tags": {},
                 "meta": {},
                 "uri": { "$ref": "/production_package/types.json#/definitions/uri" },
-                "annotations": { "$ref": "/production_package/types.json#/definitions/annotations" },
-                "schema_version": {}
+                "annotations": { "$ref": "/production_package/types.json#/definitions/annotations" }
             },
             "required": ["uri", "annotations"],
             "additionalProperties": false
