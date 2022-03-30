@@ -333,6 +333,7 @@ The attributes omitted from the table above are as follows:
 #### `showvariablepanel`
 * `panel_label`  (String, free text, required) - A label to render as a title for the interface
 * `background_colour` (String, HTML colour format) - A colour to use as the background colour of the interface
+* `pause_content` (boolean) - Determines whether or not the timer on the content pauses (e.g., video pause) while the panel is visible.  Default is true.  Regardless of this setting, the representation will not complete until the panel is finished.
 * `variables` (Array of Objects, required) - Defines which variables to include in the panel, and a question for each:
     - `variable_name` (String, required) - the name of the variable as defined in the `story` `variables` attribute
     - `label` (String, required) -  some text to be rendered next to the variable setting control (e.g., a question)

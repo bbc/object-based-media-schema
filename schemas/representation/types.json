@@ -820,6 +820,10 @@
                             "type": "string",
                             "description": "Label to display when panel is displayed (question or prompt)"
                         },
+                        "pause_content": {
+                            "type": "boolean",
+                            "description": "Should the video/audio/image timer pause while the panel is showing"
+                        },
                         "background_colour": {
                             "type": "string",
                             "description": "Background colour for the panel as html string"
