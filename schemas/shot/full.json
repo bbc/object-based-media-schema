@@ -21,8 +21,7 @@
                 "location": {"$ref": "/shot/types.json#/definitions/location" },
                 "shot_number": {"$ref": "/shot/types.json#/definitions/shot_number" },
                 "complete": {"$ref": "/shot/types.json#/definitions/complete" },
-                "rush_ids": {"$ref": "/shot/types.json#/definitions/rush_ids" },
-                "schema_version": {}
+                "rush_ids": {"$ref": "/shot/types.json#/definitions/rush_ids" }
             },
             "required": ["shot_number", "complete", "rush_ids"],
             "additionalProperties": false

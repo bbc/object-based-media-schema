@@ -22,8 +22,7 @@
                 "meta": {},
                 "asset_collection_type": {},
                 "assets": {},
-                "loop": {},
-                "schema_version": {}
+                "loop": {}
             },
             "additionalProperties": false,
             "required":["asset_collection_type"]

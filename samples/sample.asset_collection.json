@@ -10,6 +10,5 @@
     "assets": {
         "av_src": "urn:x-ipstudio:entity:package:2cf4f4a5-5e6a-4eb3-b5d4-6c957f8b8b0c"
     },
-    "loop": true,
-    "schema_version": "0.2.0"
+    "loop": true
 }

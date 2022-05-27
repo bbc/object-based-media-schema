@@ -21,8 +21,7 @@
                 "meta": {},
                 "representations": {
                     "$ref": "/representation_collection/types.json#/definitions/representations"
-                },
-                "schema_version": {}
+                }
             },
             "required": ["representations"],
             "additionalProperties": false

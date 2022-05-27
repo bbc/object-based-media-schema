@@ -6,6 +6,5 @@
     "name": "Rush 1",
     "take_number": 1,
     "production_package_id": "a45c17fb-2d9c-4d5d-9e62-a6285b9da9dc",
-    "in_progress": false,
-    "schema_version":"0.2.0"
+    "in_progress": false
 }

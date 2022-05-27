@@ -20,8 +20,7 @@
                 "tags": {},
                 "meta": {},
                 "body": { "$ref": "/narrative_element/types.json#/definitions/body" },
-                "links": { "$ref": "/narrative_element/types.json#/definitions/links" },
-                "schema_version": {}
+                "links": { "$ref": "/narrative_element/types.json#/definitions/links" }
             },
             "required": ["body", "links"],
             "additionalProperties": false
