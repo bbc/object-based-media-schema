@@ -24,18 +24,6 @@
         ]
     },
     "behaviours": {
-        "started": [
-            {
-                "id": "cf20e378-c0c6-45ef-8a94-149313d72cc5",
-                "type": "urn:x-object-based-media:representation-behaviour:pause/v1.0",
-                "pauseTime": 1.0
-            },
-            {
-                "id": "eaa8bc13-73e3-4627-afb3-09c0b7b3bd16",
-                "type": "urn:x-object-based-media:representation-behaviour:blur/v1.0",
-                "blur": 1.0
-            }
-        ],
         "during": [
             {
                 "behaviour": {

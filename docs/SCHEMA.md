@@ -239,17 +239,16 @@ Used only in conjunction with the ```switchable``` ```representation_type```, th
 
 ### behaviours
 
-Representations can also exhibit `behaviours`. Behaviours are set pieces of rendering behaviour that aid in the construction of the story you're trying to present. These could be things like mandating a pause after a particular element has been played or ensuring a time delay is observed before playing an element.  `behaviours` is an Object with up to 3 Objects inside:
+Representations can also exhibit `behaviours`. Behaviours are set pieces of rendering behaviour that aid in the construction of the story you're trying to present. These could be things like mandating a pause after a particular element has been played or ensuring a time delay is observed before playing an element.  `behaviours` is an Object with up to 2 Objects inside:
 
-* ```STARTED```: (List: of objects) with a `type` attribute denoting behaviour type in URN form and any other attributes needed to specify the exact behaviour.
 * ```COMPLETED```: (List: of objects) with a `type` attribute denoting behaviour type in URN form and any other attributes needed to specify the exact behaviour.
 * ```DURING```: (List: of objects) with a `behaviour` attribute denoting behaviour type in URN form and any other attributes needed to specify the exact behaviour, a `start_time` attribute that defines the time into the media, in seconds, that the behaviour takes effect, and an optional `duration` attribute that defines when it completes.
 
-A simple example `behaviours` attribute would be the following, with two behaviours run as the representation starts, to pause the media for 3 seconds, and apply a blur to the content for that time:
+A simple example `behaviours` attribute would be the following, with two behaviours run as the representation ends, to pause the media for 3 seconds, and apply a blur to the content for that time:
 
  ```
     "behaviours": {
-        "STARTED": [
+        "ENDED": [
             {
                 "type": "urn:x-object-based-media:asset-mixin:pause/v1.0",
                 "pauseTime": 3.0
@@ -261,7 +260,7 @@ A simple example `behaviours` attribute would be the following, with two behavio
         ]
     }
  ```
- The above denotes that the playback engine should pause for 1 second before before playing back this representation.
+ The above denotes that the playback engine should pause for 1 second after playing back this representation and before moving on to the next element.
 
 #### Behaviour types
 
