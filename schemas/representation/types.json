@@ -1020,14 +1020,6 @@
                     },
                     "minItems": 1
                 },
-                "started": {
-                    "type": "array",
-                    "items": {
-                        "title": "Started Behaviour",
-                        "$ref": "#/definitions/behaviour_types"
-                    },
-                    "minItems": 1
-                },
                 "during": {
                     "type": "array",
                     "items": {
