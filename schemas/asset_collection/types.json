@@ -91,36 +91,6 @@
                     }
                 },
                 {
-                    "title": "LOOPING AUDIO",
-                    "description": "(Deprecated) LOOPING AUDIO is deprecated in favour of SIMPLE AUDIO with looping flag",
-                    "properties": {
-                        "asset_collection_type": {
-                            "type": "string",
-                            "enum": [
-                                "urn:x-object-based-media:asset-collection-types:looping-audio/v1.0"
-                            ]
-                        },
-                        "assets": {
-                            "type": "object",
-                            "properties": {
-                                "audio_src": {
-                                    "type": "string",
-                                    "format":"uri",
-                                    "description": "URI pointing to audio"
-                                },
-                                "sub_src":{
-                                    "type": "string",
-                                    "format":"uri",
-                                    "description": "URI of subtitles."
-                                }
-                            },
-                            "required": ["audio_src"],
-                            "additionalProperties": false
-                        }
-                    },
-                    "not": { "required": [ "loop" ] }
-                },
-                {
                     "title": "SIMPLE AUDIO",
                     "properties": {
                         "asset_collection_type": {

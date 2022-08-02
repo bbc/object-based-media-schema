@@ -374,7 +374,6 @@ The table below presents the possible values for `asset_collection_type` with a 
 | `simple-av/v1.0` | Audio video content | `av_src` (URI) |
 | `immersive/v1.0` | 360 audio video |`av_src` (URI) |
 | `simple-audio/v1.0` | audio content | `audio_src` (URI)|
-| `looping-audio/v1.0` | audio content that loops | `audio_src` (URI)|
 | `simple-text/v1.0` | Plain text | `text_src` (URI) |
 | `markdown/v1.0` | Markdown text | `markdown_src` (URI) |
 | `image/v1.0` | An image | `image_src` (URI) |
